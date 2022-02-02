@@ -1,2 +1,2 @@
-# JS_Start
+# JS_Example
  Practice examples
