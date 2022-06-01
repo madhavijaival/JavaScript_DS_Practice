@@ -1,7 +1,7 @@
 
 //*************1. ANOTHER WAY USING ARRAY METHOD*************** */
 /*
-// check whether the 2nd  and 1s st string is available or not.
+// check whether the string is available or not.
 //if available create new array to store the reverse value.
 //assign i the last element and then decrease 1 by 1.
 //in the last join the stored backeword element together.
@@ -75,7 +75,7 @@ var maxSubArray = function(nums) {
       maxSum =nums[0];
 
 
-  for (let i =1; i<nums.length;i++){
+  for (let i = 1; i<nums.length;i++){
     currSum =Math.max(currSum + nums[i], nums[i]);
     maxSum=Math.max(currSum, maxSum);
   }
@@ -135,7 +135,7 @@ var moveZeroes = function(nums) {
 console.log( moveZeroes(nums)); */
 //==============================================================================
 //================2nd WAY==== ADD ZERO IN THE END============================//
-//First we have to declare variable left assign vale 0.
+//First we have to declare variable left assign value 0.
 //then iterate a loop and search for not equal to zeros numbers
 //if we got the nonzero number then we swap those number
 // it continues the process untill we get all zeros in the last of the array.
@@ -182,7 +182,7 @@ var containsDuplicate = function(nums) {
 /* let nums = [1, 2, 3, 4, 5, 6, 7], k = 3;
 
 var rotate = function(nums, k) {
-    //since a value of kk larger than nn eventually leads to a kk equivalent to k \% nk%n
+    //since a value of k larger than n eventually leads to a k equivalent to k%n
    k %=nums.length;
     //reverse whole Arrray
     reverse(nums, 0, nums.length-1);
@@ -205,3 +205,124 @@ let reverse =function(nums, start, end){
 console.log(rotate(nums, k)); */
 
 //=================================================================================================
+
+//====================Remove Duplicates from Sorted Array====================================//
+
+//**************************05/31/2022***************************************** */
+/* We can use this property of the sorted array containing duplicates to solve this question using the following steps —
+Check if the current and the next element are equal.
+If they are, we will skip the next element and will continue the procedure as long as we encounter the duplicates.
+If the elements are not duplicate, we will place the next (different) element next to the current element.
+Time Complexity:-
+We are scanning the array once, hence the time complexity will be O(n).
+Space Complexity:-
+Since we are forbidden to use the external data structure (and we are not using it), the space complexity will be O(1).
+ */
+
+/* var removeDuplicates = function(nums) {
+    let count = 0;
+     // Loop for all the elements in the array
+     for (let i = 0; i < nums.length; i++) {
+         // If the current element is equal to the next element, we skip
+         if (i < nums.length - 1 && nums[i] == nums[i + 1]) {
+             continue;
+         }
+         // We will update the array in place
+         nums[count] = nums[i];
+         count++;
+     }
+     return count;
+
+
+ };
+ console.log(removeDuplicates(nums));
+  */
+//===================================================================================================//
+//************136. Single Number*************** */
+/*
+ const nums = [4, 1, 2, 1, 2];
+var singleNumber = function(nums) {
+    let map={};
+    nums.forEach(nums=>{
+        if(nums in map) delete map[nums]
+        else map[nums]=1;
+    })
+
+    return Object.keys(map)[0];
+};
+console.log(singleNumber(nums));
+*/
+//================================================================================//
+//*******************350. Intersection of Two Arrays II************************ */
+/* var intersect = function(nums1, nums2) {
+
+    let map={}
+     let result=[]
+
+    for(let i of nums1){
+        if(!map[i]){
+            map[i] = 1;
+            }else{
+                map[i]++;
+            }
+        }
+    for (let j of nums2){
+        if(map[j] > 0){
+            result.push(j);
+            map[j]--;
+        }
+    }
+
+    return (result);
+};
+ */
+//===================================================================================//
+//**************HACKER RANK :- LEFT ROTATTION OF THE ARRAY********************** */
+// A left rotation operation on an array of size  shifts each of the array's elements  unit to the left.
+// Given an integer, , rotate the array that many steps left and return the result.
+/*
+ function rotateLeft(d, arr) {
+    // Write your code here
+    let len =arr.length
+    let newArr=[];
+    let j=0;
+    for(let i =d; i < len; i++){
+        newArr[j] = arr[i];
+        j++;
+    }
+    for(let i=0 ; i < d; i++){
+        newArr[j] =arr[i];
+        j++
+    }
+    return newArr;
+}
+ */
+//===================Another simplest way to do that =========================================//
+//https://646634.medium.com/how-to-solve-hackerranks-left-rotation-problem-88e6ee5d40ea
+
+/* function rotLeft(a, d) {
+    while (d) {
+       a.push(a.shift());
+       d--;
+    }
+ return a;
+ } */
+ //====================================================================================
+
+ //**********************Date: 06/01/2022*********************************** */
+ //===========================================================================//
+ //*****************349. Intersection of Two Arrays************************** */
+/*  var intersection = function(nums1, nums2) {
+    let firstset =new Set();
+     for(let i of nums1){
+         firstset.add(i);
+     }
+     let newSet =new Set();
+     for(let j of nums2){
+         if(firstset.has(j)){
+             newSet.add(j);
+         }
+     }
+     return Array.from(newSet);
+ };
+  */
