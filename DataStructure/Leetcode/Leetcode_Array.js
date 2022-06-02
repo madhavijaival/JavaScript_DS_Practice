@@ -326,3 +326,75 @@ console.log(singleNumber(nums));
      return Array.from(newSet);
  };
   */
+ //================================================================================//
+ //*************************HACKERRANK- PLUS MINUS PROBLEM********************************* */
+ //Given an array of integers, calculate the ratios of its elements that are positive, negative, and zero.
+ // Print the decimal value of each fraction on a new line with  places after the decimal.
+ /* 
+function plusMinus(arr) {
+    // Write your code here
+  let len =arr.length;
+  
+  let pos= 0, neg =0, zero=0;
+  for(let i= 0;i< arr.length ; i++){
+      if(arr[i] > 0)
+      {
+          pos++;
+          
+      }
+      else if(arr[i]<0)
+      {
+          neg++;
+          
+      }
+      else if(arr[i]=== 0)
+      {
+          zero++
+      }
+  }
+ 
+   console.log((pos/len).toFixed(6), " ");
+   console.log((neg/len).toFixed(6), " ");
+   console.log((zero/len).toFixed(6), " ");
+} */
+//=======================================================================
+//****************************HACKERRANK- STAIRCASE**********************************/
+//https://www.youtube.com/watch?v=zRrGulKTb4Q
+/* 
+function staircase(n) {
+    // Write your code here
+      for(let i=0 ; i<n; i++){
+       let string ="";
+       
+       for (let j=0 ; j<n-i-1; j++){
+            string +=" ";
+            }
+        for(let k=0; k<i+1; k++ ){
+            string +="#";
+        }
+        console.log(string);
+      }
+  }
+ */
+//================================================================================//
+//*********************HACKERRANK: - BIRTHDAY CAKE CANDLES ***********************/
+//==================================================================================//
+/* 
+function birthdayCakeCandles(candles) {
+    // Write your code here
+    let max=0;
+    let maxCount=0;
+    for(let i=0; i<candles.length; i++){
+        if(candles[i] > max){
+            max = candles[i];
+        }
+    }
+        for(let i=0; i<candles.length; i++){
+            if(max === candles[i]){
+                maxCount++;
+            }
+        }
+    
+    return maxCount;
+}
+ */
