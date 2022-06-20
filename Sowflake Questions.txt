@@ -62,3 +62,22 @@ Question 4:   Maximize array elements upto given number
 https://morioh.com/p/ea0f7dcf510b
 
 https://www.hackerrank.com/challenges/max-array-sum/problem
+
+
+
+
+
+Snoflake 2nd test:
+
+Question 1: Non-overlapping intervals:
+https://www.chegg.com/homework-help/questions-and-answers/1-non-overlapping-intervals-three-new-health-care-buildings-built-hackerland-built-land-pl-q98979784
+
+
+Question 2: Sorted Arrangemet:
+https://www.chegg.com/homework-help/questions-and-answers/3-sorted-arrangement-container-open-ends-always-sorted-order-insert-element-position-deter-q97798274
+
+https://leetcode.com/discuss/interview-question/371225/sorted-arrangements-infosys-specialist-programmer-on-campus-hackerrank
+
+
+Question 3: Largest Sub-grid:
+https://leetcode.com/discuss/interview-question/850974/hackerrank-online-assessment-roblox-new-grad-how-to-solve-this
