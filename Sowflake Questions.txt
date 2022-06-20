@@ -1,4 +1,4 @@
-SnowFlake Test 1: 
+SnowFlake Test 1:  Fall 2022 - Infrastructure Automation Intern Hiring Test 
 Question 1:
 https://www.chegg.com/homework-help/questions-and-answers/python-solution-hackerrank-frequency-maximum-value-part-time-clerk-works-shop-n-items-avai-q51611074
 
@@ -68,7 +68,7 @@ https://www.hackerrank.com/challenges/max-array-sum/problem
 
 
 
-Snoflake 2nd test:
+Snoflake 2nd test: Fall 2022 - Core/Database Engineering Intern Test.
 
 Question 1: Non-overlapping intervals:
 https://www.chegg.com/homework-help/questions-and-answers/1-non-overlapping-intervals-three-new-health-care-buildings-built-hackerland-built-land-pl-q98979784
