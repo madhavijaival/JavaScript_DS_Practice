@@ -67,7 +67,7 @@ End of the FOR Loop*/
 //=============================================================================================
 ///=================DATE:05/26/2022==============================//
 //*********************************************************** */
-//=========1. MAX SUM SUBARRRAY==============================//
+//=========2. MAX SUM SUBARRRAY==============================//
 /* const nums = [-2,1,-3,4,-1,2,1,-5,4];
 var maxSubArray = function(nums) {
 
@@ -150,7 +150,7 @@ console.log( moveZeroes(nums)); */
     return nums;
 }; */
 //==============================================================================
-//=====================DATE 05/26/2022====================================================//
+//4. =====================DATE 05/26/2022====================================================//
 //*******************217. Contains Duplicate / LEETCODE************************************ */
 // first we need to sort the array so we can get the sequence
 // Then iterate a loop to scan array
@@ -176,7 +176,7 @@ var containsDuplicate = function(nums) {
   return false;
 }; */
 
-//========================================================================================
+//5. ========================================================================================
 //******************* 189. ROTATING ARRAY ***************************** */
 //======THIS CODE IS NOT RUNNING IN VSCODE=========================//
 /* let nums = [1, 2, 3, 4, 5, 6, 7], k = 3;
@@ -206,7 +206,7 @@ console.log(rotate(nums, k)); */
 
 //=================================================================================================
 
-//====================Remove Duplicates from Sorted Array====================================//
+//6. ====================Remove Duplicates from Sorted Array====================================//
 
 //**************************05/31/2022***************************************** */
 /* We can use this property of the sorted array containing duplicates to solve this question using the following steps —
@@ -237,7 +237,7 @@ Since we are forbidden to use the external data structure (and we are not using 
  };
  console.log(removeDuplicates(nums));
   */
-//===================================================================================================//
+//7.===================================================================================================//
 //************136. Single Number*************** */
 /*
  const nums = [4, 1, 2, 1, 2];
@@ -252,7 +252,7 @@ var singleNumber = function(nums) {
 };
 console.log(singleNumber(nums));
 */
-//================================================================================//
+//8. ================================================================================//
 //*******************350. Intersection of Two Arrays II************************ */
 /* var intersect = function(nums1, nums2) {
 
@@ -276,7 +276,7 @@ console.log(singleNumber(nums));
     return (result);
 };
  */
-//===================================================================================//
+//9. ===================================================================================//
 //**************HACKER RANK :- LEFT ROTATTION OF THE ARRAY********************** */
 // A left rotation operation on an array of size  shifts each of the array's elements  unit to the left.
 // Given an integer, , rotate the array that many steps left and return the result.
@@ -310,7 +310,7 @@ console.log(singleNumber(nums));
  //====================================================================================
 
  //**********************Date: 06/01/2022*********************************** */
- //===========================================================================//
+ //10. ===========================================================================//
  //*****************349. Intersection of Two Arrays************************** */
 /*  var intersection = function(nums1, nums2) {
     let firstset =new Set();
@@ -326,7 +326,7 @@ console.log(singleNumber(nums));
      return Array.from(newSet);
  };
   */
- //================================================================================//
+ //11. ================================================================================//
  //*************************HACKERRANK- PLUS MINUS PROBLEM********************************* */
  //Given an array of integers, calculate the ratios of its elements that are positive, negative, and zero.
  // Print the decimal value of each fraction on a new line with  places after the decimal.
@@ -357,7 +357,7 @@ function plusMinus(arr) {
    console.log((neg/len).toFixed(6), " ");
    console.log((zero/len).toFixed(6), " ");
 } */
-//=======================================================================
+//12.=======================================================================
 //****************************HACKERRANK- STAIRCASE**********************************/
 //https://www.youtube.com/watch?v=zRrGulKTb4Q
 /* 
@@ -378,7 +378,7 @@ function staircase(n) {
  */
 //================================================================================//
 //*********************HACKERRANK: - BIRTHDAY CAKE CANDLES ***********************/
-//==================================================================================//
+//13. ==================================================================================//
 /* 
 function birthdayCakeCandles(candles) {
     // Write your code here
@@ -398,3 +398,27 @@ function birthdayCakeCandles(candles) {
     return maxCount;
 }
  */
+//====================================================================/
+//14.===================DATE: 06/10/2022==================================//
+//**************122. Best Time to Buy and Sell Stock II*********************** */
+/*Input: prices = [7,1,5,3,6,4]
+Output: 7
+Explanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.
+Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.
+Total profit is 4 + 3 = 7.*/ 
+/* const prices = [7,1,5,3,6,4]
+var maxProfit = function(prices) {
+    let total=0;
+    
+    for(let i=0; i<prices.length; i++){
+    if(prices[i] > prices[i-1]){
+      total+=prices[i] - prices[i-1];
+    }
+    }
+     return total;
+
+};
+
+console.log(maxProfit(prices)); 
+*/
+//=========================================================================//

@@ -1,5 +1,5 @@
 //=====================05/31/2022=========================//
-//===========Find the closest vlaue in BST=======================//
+//1. ===========Find the closest vlaue in BST=======================//
 /* function findClosestValueInBst(tree, target) {
     // Write your code here.
     return  closestNumber(tree, target, tree.value);
@@ -74,7 +74,7 @@ var closestValue = function(root, target) {
 };
 */
 //============================================================================================//
-//******************700. Search in a Binary Search Tree****************************************** */
+//2.******************700. Search in a Binary Search Tree****************************************** */
 // You are given the root of a binary search tree (BST) and an integer val.
 // Find the node in the BST that the node's value equals val and return the subtree rooted with that node. If such a node does not exist, return null.
 
@@ -97,7 +97,7 @@ var closestValue = function(root, target) {
 
 
 //====================================================================================//
-//************************104. Maximum Depth of Binary Tree*********************** */
+//3. ************************104. Maximum Depth of Binary Tree*********************** */
 
 /* var maxDepth = function(root) {
     let max = 0;
