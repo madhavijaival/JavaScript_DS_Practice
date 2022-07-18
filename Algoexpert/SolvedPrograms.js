@@ -591,4 +591,210 @@ exports.removeDuplicatesFromLinkedList = removeDuplicatesFromLinkedList;
  */
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
-//=====================14. ==========================================
+//=====================14. NTH FIBONACCI ==========================================
+//||TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(1) 
+/* 
+ALGORITHM:
+- FIRST WE NEED TO CREATE AN ARRAY TO STORE FIRST TWO NUMBER 0 AND 1 
+- THEN CREATE COUNTER VARIABLE AND ASSIGN IT 3
+- DO THE WHILE LOOP UNTILL THE COUNTER <= N VALUE
+- IN THE WHILE LOOP ADD THE FORMULA TO CREATE NEW FIB NUMBER AND THEN DO THE SWAPPING FIRST NUMBER GONNA REMOVE 2ND NUMBER MOVE PLACE TO FIRST AND NEW FIB NUMBER ON THE SECOND PLACE OF THE ARRAY INDEX[1]
+- THEN INCREASE THE COUNTER BY 1 AND RETURN THE VALUE OF LASTTWO [1] IF THE NUMBER IS GREATER THAN 1
+*/
+/* 
+function getNthFib(n) {
+  // Write your code here.
+  let lastTwo =[0, 1];
+  let Counter = 3;
+  while(Counter <= n){
+    nextFib = lastTwo[0] + lastTwo[1];
+    lastTwo[0] = lastTwo[1];
+    lastTwo[1] =nextFib;
+    Counter += 1;
+  }
+  return n > 1 ? lastTwo[1] : lastTwo[0];
+}
+
+// Do not edit the line below.
+exports.getNthFib = getNthFib;
+ */
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+//=========================15. PRODUCT SUM [ARRAY IN THE ARRAY]====================================//
+//TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(d), Where  n is the total number of element in the array 
+//including sub-element, and d is the greatest depth of the special array in the array.
+/*
+ALGORITHM:
+- FIRST WE NEED TO ADD AN MULTIPLIER IN THE FUNCTION PARAMETER.
+-THEN CREATE SUM VARIABLE TO STORE THE SUM.
+- THEN RUN THE FOR LOOP TO ACCESSING THE ARRAY ELEMENT AND ADD IF THE ELEMENT IS ARRAY OR NOT.
+- IF THE ELEMENT IS THE ARRAY THEN CALL RESURSIVE FUNCTION AND ADD TO THE SUM.
+- ELSE ADD ELEMENT TOT THE SUM AND END RETURN THE SUM * MULTIPLIER. 
+ */
+
+/* // Tip: You can use the Array.isArray function to check whether an item
+// is a list or an integer.
+function productSum(array, multiplier=1) {
+  // Write your code here.
+  let sum = 0;
+  for (const element of array){
+    if(Array.isArray(element)){
+      sum += productSum(element, multiplier + 1)
+    }else{
+      sum += element;
+    }
+  }
+  return sum * multiplier;
+}
+
+// Do not edit the line below.
+exports.productSum = productSum;
+ */
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+//====================16. BINARY SEARCH ==============================//
+/*
+ALGORITHM: 
+- FOR THE BINARY SEARCH ARRAY ALWAYS SHOULD BE SORTED.
+- THE WE ASSIGN THE FIRST VALUE LEFT AND LAST IS RIGHT.
+- THEN TAKE MIDDLE VALUE BYE THE FORMULA USING (LEFT + RIGHT / 2) 
+- THEN CHECK IS THE MIDDLE VALUE IS SAME AS THE TARGET VALUE IF IT'S SAME THE JUST O/P THE INDEX OF MIDDLE
+- ELSE IF THE MIDDLE VALUE IS GREATER THAN THE TARGET WE NEED TO ERASE ALL RIGHT ELEMENT AND THE  ADD RIGHT = MIDDLE - 1
+- ELSE IF THE MIDDLE VALUE IS SMALLER THAN THE TARGET VALUE THEN WE NEED TO ERASE ALL THE LEFT VALUE AND ASSIGN LEFT = MIDDLE + 1
+- RETURN THE HELPER FUNCTION IN MAIN. 
+ */
+
+//***********SOLUTION 1******************** */
+//TIME COMPLEXITY O(log(n)) & SPACE COMPLEXITY O(log(n))
+/* function binarySearch(array, target) {
+  // Write your code here.
+  return binarySearchHelper(array, target, 0, array.length-1);
+}
+function binarySearchHelper(array, target, left, right){
+  if(left > right)  return -1;
+  let middle = Math.floor((left+right) / 2);
+  if(array[middle] ===  target){
+    return middle;
+  }else if(array[middle] > target){
+    return binarySearchHelper(array, target, left, middle -1);
+  }else{
+    return binarySearchHelper(array, target, middle +1, right);
+  }
+}
+// Do not edit the line below.
+exports.binarySearch = binarySearch;
+ */
+//**************SOLUTION 2********************* */
+//TIME COMPLEXITY O(log(n)) & SPACE COMPLEXITY O(1)
+/* function binarySearch(array, target) {
+  // Write your code here.
+ return binarySearchHelper(array, target, 0, array.length-1);
+}
+
+function binarySearchHelper(array, target, left, right){
+  while(left <= right){
+    const middle = Math.floor((left + right) / 2);
+    if(array[middle] === target){
+      return middle;
+    }else if(target < array[middle]){
+      right = middle - 1;
+    }else{
+      left = middle + 1;
+    }
+  }
+  return -1;
+}
+// Do not edit the line below.
+exports.binarySearch = binarySearch; 
+*/
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+
+//=====================17. FINDTHREE LARGEST NUMBERS ===================================//
+////TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(1)
+/*
+ALGORITHM:
+- FIRST WE NEED TO CREATE AN ARRAY TO STORE THE LARGEST NUMBER AND ASSIGN INTIAL NULL TO ALL THREE.
+- IN THE HELPER FUNCTION WE HAVE TO PARAMETER ONE IS THE THREELASRGEST ARRAY AND PASSED ELEMENT OF ARRAY.
+- THEN CHECK IF THE LARGEST INDEX VALUE IS NULL OR GREATER THAN THE CURRENT ARRAY ELEMNTS IF ONE OF THE CONDITION IS TRUE THEN CALL ANOTHER HELPER FUNCTION TO SHIF ARRAY ELEMENT OF THE LARGESTTHREE.
+- REPEAT PREVIOUS SAME PROCEDURE FOR THE INDEX 1 AND INDEX 0 ALSO.
+- THEN IN THE 2ND HELPER FUCNTION WE SHIFT THE ELEMENT CHECKING THE VALUE OF THE ARRAY OF THREELARGEST NUMS.   
+ */
+/* function findThreeLargestNumbers(array) {
+  // Write your code here.
+let threeLargest= [null, null, null];
+  for(let num of array){
+    updateArray(threeLargest, num);
+  }
+  return threeLargest;
+}
+
+function  updateArray(threeLargest, num){
+  if(threeLargest[2] === null || num > threeLargest[2]){
+  shiftLargest(threeLargest, num, 2);
+  } else if(threeLargest[1] === null || num > threeLargest[1]){
+    shiftLargest(threeLargest, num , 1);
+  } else if (threeLargest[0] === null || num > threeLargest[0]){
+    shiftLargest(threeLargest, num, 0);
+  }
+}
+
+function shiftLargest(array, num, idx){
+  for(let i =0; i<= idx; i++){
+    if(i === idx) return array[i] = num;
+    else
+      array[i]= array[i+1];
+  }
+}
+// Do not edit the line below.
+
+exports.findThreeLargestNumbers = findThreeLargestNumbers; 
+*/
+//******************* SOLUTION 2 EASY:**************************//
+/* function findThreeLargestNumbers(array) {
+  // Write your code here.
+  //Time complexity(log(n)) Space Complexity O(1).
+  array.sort((a, b) => a-b); 
+  return array.slice(-3);
+}
+
+// Do not edit the line below.
+exports.findThreeLargestNumbers = findThreeLargestNumbers;
+ */
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+
+//=====================18. BUBBLE SORT ================================//
+//Best: TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(1)
+//Average: TIME COMPLEXITY O(n^2) & SPACE COMPLEXITY O(1)
+//Worst: TIME COMPLEXITY O(n^2) & SPACE COMPLEXITY O(1)
+/* 
+function bubbleSort(array) {
+  // Write your code here.
+let isSorted = false;
+  let counter =0;
+  while (!isSorted){
+    isSorted =true;
+    for(let i = 0; i< array.length - 1 - counter; i++ ){
+      if(array[i] > array[i+1]){
+        swapArr(i, i + 1, array);
+        isSorted = false;
+      }
+    }
+     counter++;
+  }
+  return array;
+}
+
+function swapArr(i, j, array){
+  let temp = array[i];
+  array[i] =array[j];
+  array[j] = temp;
+  
+}
+
+// Do not edit the line below.
+exports.bubbleSort = bubbleSort;
+ */
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+//====================19. ====================================//
