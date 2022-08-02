@@ -797,4 +797,55 @@ function swapArr(i, j, array){
 exports.bubbleSort = bubbleSort;
  */
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-//====================19. ====================================//
+//====================19. INSERTION SORT ====================================//
+//TIME COMPLEXITY O(n^2) & SPACE COMPLEXITY O(1)
+/* function insertionSort(array) {
+  // Write your code here.
+  for (let num =0; num < array.length; num++)
+    {
+      let j =num;
+      while( j > 0 && array[j] < array[j-1] ){
+        swap(j, j-1, array);
+        j -=1;
+      }
+    }
+  return array;
+}
+function swap(i, j, array){
+  let temp = array[i];
+  array[i] = array[j];
+  array[j] =temp;
+}
+
+// Do not edit the line below.
+exports.insertionSort = insertionSort;
+ */
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+//=====================20.SELECTION SORT ================================//
+//TIME COMPLEXITY O(n^2) & SPACE COMPLEXITY O(1)
+
+/* function selectionSort(array) {
+  // Write your code here.
+  let currentIdx =0;
+  while(currentIdx < array.length-1){
+    let smallIdx = currentIdx;
+    for(let i = currentIdx + 1; i < array.length; i++){
+      if(array[smallIdx] > array[i]) smallIdx = i;
+    }
+      swap(currentIdx, smallIdx, array)
+      currentIdx +=1;
+  }
+  return array
+}
+
+function swap(i, j, array){
+  let temp= array[i];
+  array[i] =array[j];
+  array[j] = temp;
+} 
+
+// Do not edit the line below.
+exports.selectionSort = selectionSort; */
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+
+//========================= 21. PALINDROME CHECK ===================//
