@@ -1,0 +1,11 @@
+cisco:
+https://medium.com/@matthew.reid.os1/exploring-the-look-and-say-sequence-using-javascript-6a1aee8a88a3
+
+https://smartcodehelper.com/2022/03/11/fizzbuzz-solution-check-is-multiple-of-using-javascript/
+
+https://www.tutorialspoint.com/finding-and-returning-uncommon-characters-between-two-strings-in-javascript
+
+
+Citadel:
+
+https://www.geeksforgeeks.org/minimize-the-maximum-difference-between-the-heights/
