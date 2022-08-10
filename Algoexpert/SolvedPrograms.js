@@ -799,6 +799,7 @@ exports.bubbleSort = bubbleSort;
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 //====================19. INSERTION SORT ====================================//
 //TIME COMPLEXITY O(n^2) & SPACE COMPLEXITY O(1)
+
 /* function insertionSort(array) {
   // Write your code here.
   for (let num =0; num < array.length; num++)
@@ -849,3 +850,228 @@ exports.selectionSort = selectionSort; */
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
 //========================= 21. PALINDROME CHECK ===================//
+//TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(1)
+/* 
+ALGORITHM:
+- CHECKING FIRST AND LAST CHARACTER IS EQUAL OR NOT.
+ */
+
+ //************SOLUTION 1********************** */
+/* function isPalindrome(string, i = 0) {
+  // Write your code here.
+  let left = 0; 
+  let right = string.length-1;
+   while(left < right){
+     if(string[left] !== string[right]) return false;
+     left++;
+     right--;
+   }
+  return true;
+}
+
+// Do not edit the line below.
+exports.isPalindrome = isPalindrome;
+ */
+
+//************* SOLUTION 2 **************** */
+//TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(n)
+ /* 
+  let j =string.length - 1 - i;
+  if(i >= j)
+    return true; 
+  if(string[i] !== string[j])
+    return false;
+  return isPalindrome(string, i+1); 
+  */
+  //*************SOLUTION 3*************** */
+ //TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(n)
+/* 
+  let reverseStr=[]; 
+  
+  for(let i = string.length; i>=0 ; i--){
+    
+    reverseStr.push(string[i]);
+  }
+  
+  return reverseStr.join('') === string;
+   */
+//*************SOLUTION 4 *************** */
+//TIME COMPLEXITY O(n^2) & SPACE COMPLEXITY O(1)
+
+/* 
+let reverseStr= ""; 
+  
+for(let i = string.length-1; i>=0 ; i--){
+
+   reverseStr +=string[i];
+}
+ 
+ return string === reverseStr;
+ 
+ */
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+//================== 22. RUN-LENGTH ENCODING ========================//
+
+//TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(n) - Where n is the length of the input string.
+
+/* 
+ALGORITHM: 
+- FIRST WE NEED TO CREATE THE ARRAY FOR STORING ENCODED CHARACTER.
+- THEN ASSIGN CURRENTLENGHT = 1
+- LOOP THROUGH THE STRING ELEMENTS AND ADD THE IF LOOP TO CHECK CONDITION
+    - IF THE CURRENT CHAR IS = PREVIOUS CHAR OR THE CURRENTLENGHT === 9
+- THEN ADD THE LENGTH TO THE ENCODED ARRAY (toString() for conversion)
+- AND ADD PREVIOUS CHARACTER AND RESET THE CURRENTLENGTH
+- TO HANDLE LAST RUN WE HAVE TO ADD LENGTH AND LASTELEMENT TO THE ENCODED ARRAY
+- RETURN THE RESULT WIT THE ENCODED STRING ARRAY USING (join(""))
+ */
+
+/* 
+function runLengthEncoding(string) {
+  // Write your code here.
+ let encodeChar = [];
+  let currentLength = 1;
+  
+  for(let i = 1; i < string.length ; i++){
+     if(string[i] !== string[i-1] || currentLength === 9){
+      encodeChar.push(currentLength.toString());
+      encodeChar.push(string[i-1]);
+       currentLength = 0;    
+    }  
+     currentLength++;
+  }
+//Handle the last run...
+ encodeChar.push(currentLength.toString());
+ encodeChar.push(string[string.length - 1]);
+
+ return encodeChar.join('');
+  
+}
+
+// Do not edit the line below.
+exports.runLengthEncoding = runLengthEncoding;
+ */
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+//====================23. caesarCipherEncryptor =================//
+//TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(n)
+
+//**************SOLUTION 1********************* */
+/* function caesarCipherEncryptor(string, key) {
+  // Write your code here.
+  const newLetter =[];
+  const newKey = key % 26;
+  for(const letter of string){
+    newLetter.push(getNewLetter(letter, newKey));
+  }
+  return newLetter.join("");
+}
+function getNewLetter(letter, key){
+  const newLetterCode = letter.charCodeAt() + key;
+  return newLetterCode <=122 ? String.fromCharCode(newLetterCode) : String.fromCharCode(96 +(newLetterCode %122));
+}
+// Do not edit the line below.
+exports.caesarCipherEncryptor = caesarCipherEncryptor;
+ */
+
+//**************SOLUTION 2********************* */
+//TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(n)
+
+/* function caesarCipherEncryptor(string, key) {
+  // Write your code here.
+  const newLetter = [];
+  const newKey = key % 26;
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+  for(const letter of string){
+    newLetter.push(getLetter(letter, newKey, alphabet));
+  }
+  return newLetter.join('');
+}
+
+function getLetter(letter, key, alphabet){
+ const newCodedLetter = alphabet.indexOf(letter) + key;
+  return alphabet[newCodedLetter  % 26];
+}
+// Do not edit the line below.
+exports.caesarCipherEncryptor = caesarCipherEncryptor;
+ */
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+//===========24.GENERATE DOCUMENT - LOOKING FOR SIMILAR STRING FROM GIVEN =====================//
+//TIME COMPLEXITY O( n + m ) & SPACE COMPLEXITY O(C), WHERE n IS NUMBAER OF CHARACTERS, 
+//m IS THE LENGTH OF THE DOCUMENT, AND C IS THE NUMBER OF UNIQUE CHARACTERS IN STRING
+
+//************* SOLUTION 1 - OPTIMAL(HASHMAP)****************** */
+/* 
+function generateDocument(characters, document) {
+  // Write your code here.
+  let characterCount = {};
+
+  for(const char of characters){
+    if(!(char in characterCount)) characterCount[char] =0;
+    
+    characterCount[char]++;
+  }
+
+  for(const char of document){
+    if(!(char in characterCount) || characterCount[char] === 0) return false;
+    
+    characterCount[char]--;
+  }
+  
+  return true;
+}
+
+// Do not edit the line below.
+exports.generateDocument = generateDocument;
+ */
+
+
+
+//************* SOLUTION 2 - (SET)****************** */
+
+//TIME COMPLEXITY O(c * ( n + m) ) & SPACE COMPLEXITY O(C)
+
+/* function generateDocument(characters, document) {
+  // Write your code here.
+  let alreadycCounted = new Set();
+  
+  for(const char of document){
+    
+    if(char in alreadycCounted) continue;
+    
+    const freqOfDocument = countFrequencyChar(char, document);
+    const freqOfCharacters = countFrequencyChar(char, characters);
+
+    if(freqOfDocument > freqOfCharacters) return false; 
+    
+    alreadycCounted.add(char);
+  }
+  return true;
+}
+ */
+//********************SOLUTION 3 ************************ */
+
+//TIME COMPLEXITY O(m * ( n + m) ) & SPACE COMPLEXITY O(C) 
+
+/* function generateDocument(characters, document) {
+  // Write your code here. 
+for( const char of document){
+  const freqOfDocument = countFrequencyChar(char, document);
+   const freqOfCharacters= countFrequencyChar(char, characters);
+if(freqOfDocument > freqOfCharacters) return false;
+   }
+  return true;
+}
+
+function countFrequencyChar(char, target){
+let frequency =0;
+  for(const num of target){
+    if( num == char ) frequency++;
+  }
+  return frequency;
+} 
+*/
+//===========================================================
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
