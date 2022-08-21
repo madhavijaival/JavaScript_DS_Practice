@@ -999,6 +999,7 @@ exports.caesarCipherEncryptor = caesarCipherEncryptor;
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 //===========24.GENERATE DOCUMENT - LOOKING FOR SIMILAR STRING FROM GIVEN =====================//
+
 //TIME COMPLEXITY O( n + m ) & SPACE COMPLEXITY O(C), WHERE n IS NUMBAER OF CHARACTERS, 
 //m IS THE LENGTH OF THE DOCUMENT, AND C IS THE NUMBER OF UNIQUE CHARACTERS IN STRING
 
@@ -1051,7 +1052,7 @@ exports.generateDocument = generateDocument;
   return true;
 }
  */
-//********************SOLUTION 3 ************************ */
+//********************SOLUTION 3************************ */
 
 //TIME COMPLEXITY O(m * ( n + m) ) & SPACE COMPLEXITY O(C) 
 
@@ -1073,5 +1074,6 @@ let frequency =0;
   return frequency;
 } 
 */
-//===========================================================
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+//=====================25. ======================================//
