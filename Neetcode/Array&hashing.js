@@ -353,6 +353,335 @@ var maxProfit = function(prices) {
         return longStr;
     };
      */
+    
+//========================================================================//
+//-----------------------++  STACK  ++--------------------------------//
+//========================================================================//
 
-//*************PROBLEM 12 - ************** */
+//************* PROBLEM 12 - 20. Valid Parentheses ************** */
 //TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(n)
+
+/* var isValid = function(s) {
+    let stack =[];
+    let charStack ={
+        ")" : "(",
+        "]" : "[", 
+        "}" : "{",
+    };
+    
+    if(!s) return false;
+    
+    for(let c of s){
+        // check if closing bracket
+        if(charStack[c]){
+            
+            const topEle = stack.length === 0 ? "#": stack.pop();
+            
+            if(topEle !== charStack[c]){
+                
+                return false;
+            }
+               // opening bracket case
+        }else{
+            stack.push(c);
+        }
+    }
+   return stack.length === 0;
+}; */
+
+
+//************* PROBLEM 13 - 155. Min Stack ************** */
+//TIME COMPLEXITY O(1) || SPACE COMPLEXITY O(n)
+
+// var MinStack = function() {
+   
+//     this.stack =[];
+//     this.minStack=[];
+      
+// };
+
+// /** 
+//  * @param {number} val
+//  * @return {void}
+//  */
+// MinStack.prototype.push = function(val) {
+//    this.stack.push(val);
+//     if(!this.minStack.length || val <= this.minStack[this.minStack.length -1]){
+//         this.minStack.push(val);
+//     }
+   
+// };
+
+// /**
+//  * @return {void}
+//  */
+// MinStack.prototype.pop = function() {
+    
+//     const val  =  this.stack.pop();
+//     if(val === this.minStack[this.minStack.length -1]){
+//         this.minStack.pop();
+//     }
+// };
+
+// /**
+//  * @return {number}
+//  */
+// MinStack.prototype.top = function() {
+//     return this.stack[this.stack.length -1];
+    
+// };
+
+// /**
+//  * @return {number}
+//  */
+// MinStack.prototype.getMin = function() {
+//    return this.minStack[this.minStack.length -1]; 
+// };
+ 
+
+// /** 
+//  * Your MinStack object will be instantiated and called as such:
+//  * var obj = new MinStack()
+//  * obj.push(val)
+//  * obj.pop()
+//  * var param_3 = obj.top()
+//  * var param_4 = obj.getMin()
+//  */
+ 
+//************* PROBLEM 14 - 150. Evaluate Reverse Polish Notation ************** */
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(n)
+
+/* const Operator = {
+    '+': (a, b) => a + b,
+    '-': (a, b) => a - b,
+    '*': (a, b) => a * b,
+    '/': (a, b) => Math.trunc(a / b),
+};
+
+var evalRPN = function(tokens) {
+  const stack=[];
+    
+    for(let i of tokens){
+        if( i in Operator){
+            const lhs = stack.pop();
+            const rhs = stack.pop();
+            stack.push(Operator[i](rhs,lhs));
+        }else{
+            stack.push(Number(i));
+        }
+    }
+    return stack.pop();
+   
+}; */
+
+//************* PROBLEM 15 - 704. Binary Search  ************** */
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(1)
+/* Algorithm
+- Initialise left and right pointers : left = 0, right = n - 1.
+      While left <= right :
+- Compare middle element of the array nums[pivot] to the target value target.
+- If the middle element is the target target = nums[pivot] : return pivot.
+     - If the target is not yet found :
+    -If target < nums[pivot], continue the search on the left right = pivot - 1.
+- Else continue the search on the right left = pivot + 1. 
+*/
+
+/* var search = function(nums, target) {
+    let mid;
+    let left = 0;
+    let right =nums.length-1;
+
+    while(left <= right){
+        mid = Math.floor(left +(right - left )/2);
+        
+        if(nums[mid] === target ){
+            return mid;
+        }
+        if(target > nums[mid] ){
+            left = mid+1;
+        }else {
+            right = mid-1;
+        }     
+    }
+   
+     return -1;
+}; */
+//************* PROBLEM 16 - 74. Search a 2D Matrix ************** */
+//TIME COMPLEXITY O(nlogm)|| SPACE COMPLEXITY O(1)
+
+//++++++++++++++ SOLUTION 1 ++++++++++++++++++++++//
+/* var searchMatrix = function(matrix, target) {
+    
+    let i =0, j = matrix[0].length-1; // number of coloumns
+      
+      while(i < matrix.length && j >=0){
+          if(matrix[i][j] === target){
+              return true;
+          }else if(matrix[i][j] > target){
+              j--;
+              }else{
+                  i++;
+              }
+          }
+      return false;
+  };
+ */
+//+++++++++++++++++++ SOLUTION 2 ++++++++++++++++++++++//
+//Time O(log(ROWS * COLS)) | Space O(1)
+/* var searchMatrix = function(matrix, target) {
+    if(matrix.length == 0) return false;
+  
+    let n =matrix.length;
+    let m =matrix[0].length;
+    
+    let low =0;
+    let high = (n*m) -1;
+    
+    while(low <= high){
+        let mid = Math.floor(low+(high - low) / 2);
+         const [ row, col ] = [ (Math.floor(mid / m)), (mid % m) ]
+        if(matrix[row][col] ===  target){
+            return true;
+        }else if(matrix[row][col] < target){
+            low = mid +1;
+        }else{
+            high = mid-1;
+        }
+    }
+    return false;
+}; 
+*/
+
+//========================================================================//
+//-----------------------++ LINKED LIST ++--------------------------------//
+//========================================================================//
+
+//************* PROBLEM 17- 206. Reverse Linked List************** */
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(1)
+/* ALGORITHM :
+//https://www.geeksforgeeks.org/reverse-a-linked-list/
+
+1. Initialize three pointers prev as NULL, curr as head and next as NULL.
+2. Iterate through the linked list. In loop, do following. 
+// Before changing next of current, 
+// store next node 
+next = curr->next
+// Now change next of current 
+// This is where actual reversing happens 
+curr->next = prev 
+// Move prev and curr one step forward 
+prev = curr 
+curr = next
+ */
+
+/* var reverseList = function(head) {
+    let prev =null;
+    let curr = head;
+    
+    while(curr){
+        let next = curr.next;
+        curr.next =prev;
+        prev = curr;
+        curr = next;
+    }
+    return prev;
+}; */
+
+//************* PROBLEM 18 - 21. Merge Two Sorted Lists **************** */
+
+//TIME COMPLEXITY O(m + n) || SPACE COMPLEXITY O(m + n)
+//https://duncan-mcardle.medium.com/leetcode-problem-21-merge-two-sorted-lists-javascript-b5a4de3da319
+/* 
+ALGORITHM:
+Method 2 (Iterative):
+
+Approach: This approach is very similar to the above recursive approach.
+1. Traverse the list from start to end.
+2. If the head node of second list lies in between two nodes of the first list, insert it there and make the next node of second list the head. 
+Continue this until there is no node left in both lists, i.e. both the lists are traversed.
+3. If the first list has reached end while traversing, point the next node to the head of second list.
+ */
+
+/* var mergeTwoLists = function(list1, list2) {
+      let newList = new ListNode(0);
+        let headOfNew = newList;
+        
+        while(list1 !== null && list2 !== null){
+            if(list1.val < list2.val){
+                newList.next =list1;
+                list1 =list1.next;
+            }else{
+                newList.next =list2;
+                list2 =list2.next;
+            }
+            newList =newList.next;
+        }
+        
+        if(list1 ===  null){
+            newList.next =list2
+        }else{
+            newList.next =list1
+        }
+        return headOfNew.next;
+        
+    }; */
+    
+//++++++++++++++++SOLUTION 2 - RECURSIVE++++++++++++++++++++++++//
+//TIME COMPLEXITY O(m + n) || SPACE COMPLEXITY O(m + n)
+
+/* 
+ALGORITHM:
+Method (Recursive):
+Approach: The recursive solution can be formed, given the linked lists are sorted.
+1. Compare the head of both linked lists.
+2. Find the smaller node among the two head nodes. The current element will be the smaller node among two head nodes.
+3. The rest elements of both lists will appear after that.
+4. Now run a recursive function with parameters, the next node of the smaller element, and the other head.
+5. The recursive function will return the next smaller element linked with rest of the sorted element. Now point the next of current element to that, i.e curr_ele->next=recursivefunction()
+6. Handle some corner cases. 
+  - If both the heads are NULL return null.
+  - If one head is null return the other.
+ */
+
+ /* var mergeTwoLists = function(list1, list2) {
+    if(list1 === null) return list2;
+    if(list2 === null) return list1;
+    
+    if(list1.val < list2.val){
+        list1.next = mergeTwoLists(list1.next, list2);
+        return list1;
+    }else{
+         list2.next = mergeTwoLists(list1, list2.next);
+        return list2;
+    }
+};
+ */
+//==========================================================================
+
+//****************** PROBLEM 19 - 141. Linked List Cycle **************** */
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(1)
+/*
+ALGORITHM :
+Approach : Floyd's Cycle Finding Algorithm 
+- The space complexity can be reduced to O(1) by considering two pointers at different speed - a slow pointer and a fast pointer. 
+The "slow pointer moves one step" at a time while the "fast pointer moves two steps" at a time.
+- If there is no cycle in the list, the fast pointer will eventually reach the end and we can return FALSE in this case.
+-If the fast runner will eventually meet the slow runner then there is a cycle and it return TRUE
+ */
+
+/* var hasCycle = function(head) {
+    let slow = head;
+    let fast = head;
+    
+    while(fast !== null && fast.next !== null){
+        slow = slow.next;
+        fast = fast.next.next;
+        if(slow === fast){
+            return true;
+        }
+        
+    }
+    
+    return false;
+    
+}; */
