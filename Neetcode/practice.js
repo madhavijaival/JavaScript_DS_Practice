@@ -25,9 +25,8 @@
      return false;
  
  }; */
- //==================================================//
-
- //**************PROBLEM 2. **242. Valid Anagram****************************** */
+ //==========================================================================//
+ //**************PROBLEM 2 :- 242. Valid Anagram****************************** */
  //Time complexity = O(n log(n)) || Space complexity = O(1)
  /* 
  var isAnagram = function(s, t) {
@@ -61,9 +60,9 @@
       return true;
   };
  */
-//==================================================
+//========================================================================//
 
-//***********PROBLEM 3. ***1. Two Sum***************** */
+//**************PROBLEM 3:- 1. Two Sum**********************************/
 //Time complexity: O(n^2) || Space complexity: O(1)
 //BRUTE FORCE APPROCH
 
@@ -98,8 +97,7 @@ var twoSum = function(nums, target) {
      
 };
 */
-//============================================================//
-
+//========================================================================//
 //******************PROBLEM 4 - 49. Group Anagrams medium**************************** */
 //Time Complexity O(m*n)
 //https://www.youtube.com/watch?v=kQL41OMf51Y
@@ -119,11 +117,180 @@ let result = {};
     return Object.values(result);
 };
 */
+//=============================================================================//
+//******************PROBLEM 5 : 347. Top K Frequent Elements*******************/
+//Time Complexity O(n) ||https://www.youtube.com/watch?v=NoGoc5QmLxs
+
+/* var topKFrequent = function(nums, k) {
+    let map = {};
+    const bucket =[];
+    let res =[];
+    
+    //first add value with the occurence to the map
+    for(let num of nums){
+        if (!map[num]){
+            map[num] =1;
+        }else{
+            map[num]++;
+        }
+    }
+   
+    //create the bucket to store the value eith occurence;
+    for(let i = 0; i<=nums.length; i++){
+        bucket.push([]);
+    }
+    
+    //Populate the bucket
+    
+    for(let key in map){
+        let count = map[key];
+        bucket[count].push(key);
+    }
+    //to get the result
+    for(let i = bucket.length - 1; i>=0; i--){
+        if(bucket[i] === 0){
+            continue;
+        }else{
+            res = [...res, ...bucket[i]];
+        }    
+    }
+    
+    return res.slice(0, k);
+};
+ */
+//======================================================================//
+
+//******************PROBLEM 6 : 238. Product of Array Except Self *******************/
+//Time Complexity O(n) || Space Complexity O(n)
+
+/* var productExceptSelf = function(nums) {
+    const res=[];
+     let product = 1;    
+    //Calculate the prefix
+    for(let i = 0; i< nums.length; i++){
+        res[i] =product;
+        product*= nums[i];
+         }
+    //Calculate the postfix
+   product = 1;
+   for(let j = nums.length-1; j>=0; j--){
+        res[j] *= product;
+        product *= nums[j];
+       
+    }
+ return res;     
+}; 
+*/
+//======================================================================//
+
+//******************PROBLEM 7 :  36. Valid Sudoku*******************/
+//Time Complexity O(n^2) || Space Complexity O(n^2)
+/* 
+var isValidSudoku = function(board) {
+   let row ={};
+    let col ={};
+    let square = {};
+    
+    for(let r = 0; r<9; r++){
+        for(let c =0; c<9; c++){
+            const num  = board[r][c];
+            
+            if(num === "."){
+                continue;
+            }
+            
+            //count subgrid
+            const grid = `${Math.floor(r/3)} ${Math.floor(c/3)}`;
+            
+            
+            if(!row[r]){
+                row[r] = new Set();
+            }
+            if(!col[c]){
+                col[c] = new Set();
+            }
+            if(!square[grid]){
+                square[grid] = new Set();
+            }
+            
+            if(row[r].has(num)||col[c].has(num)||square[grid].has(num)){
+                return false;
+            }
+           
+            row[r].add(num);
+            col[c].add(num);
+            square[grid].add(num);
+           
+        }
+    }
+    return true;
+};
+
+//======================================================================//
+
+//******************PROBLEM 8 : 271. Encode and Decode Strings*****************/
+//Time Complexity O(n) || Space Complexity O(n)
+/* var encode = function(strs) {
+    
+    return strs.map((str)=> `${str.length}#${str}`).join('');
+};
+
+var decode = function(s) {
+   const res= [];
+    let i =0; 
+    
+    while(i < s.length){
+        let  j = i; 
+        while( s[j] !== '#'){
+            ++j;
+        }
+        
+        const len = Number(s.slice(i, j));
+        
+        res.push(s.slice(++j, j+len));
+        
+        i = j+len;
+    }
+  
+    return res;
+};
+ */
+//====================================================================//
+
+//******************PROBLEM 9 : 128. Longest Consecutive Sequence*****************/
+//Time Complexity O(n) || Space Complexity O(n)
+
+/* var longestConsecutive = function(nums) {
+  
+    if(nums ===  null || nums.length ===  null){
+        return 0;
+    }
+    const set = new Set(nums);
+    let max = 0; 
+    
+    for(let num of set){
+        if(set.has(num-1)){
+            continue;
+        }
+        
+        let currNum = num;
+        let currMax =1;
+        while(set.has(currNum + 1)){
+            currNum++;
+            currMax++;
+        }
+        max = Math.max(currMax, max);
+    }
+    return max;
+};
+ */
+ 
+
 //========================================================================//
-//---------------------TWO POINTERS--------------------------------------//
+//------------------------TWO POINTERS--------------------------------------//
 //=======================================================================//
 
-//******************PROBLEM 5 - 125. Valid Palindrome******************** */
+//******************PROBLEM 1- 125. Valid Palindrome******************** */
 //https://rishabh1403.com/posts/coding/leetcode/2020/03/leetcode-valid-palindrome
 
 //++++++++++++++++++++ SOLUTION 1 +++++++++++++++++++++++++//
@@ -176,7 +343,7 @@ return true;
 
 //=====================================================================//
 
-//************ PROBLEM 6 - 167. Two Sum II - Input Array Is Sorted **********/
+//************ PROBLEM 2- 167. Two Sum II - Input Array Is Sorted **********/
 //TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(1)
 /*
  var twoSum = function(numbers, target) {
@@ -198,7 +365,7 @@ return true;
 */
 //=====================================================================//
 
-//**************** PROBLEM 7 - 15. 3 Sum ********************/
+//**************** PROBLEM 3 - 15. 3 Sum ********************/
 
 //TIME COMPLEXITY O(n^2) || SPACE COMPLEXITY O(1)
 /* 
@@ -240,7 +407,7 @@ var threeSum = function(nums) {
  */
 //===================================================================//
 
-//*************PROBLEM 8 - 11. Container With Most Water************* */
+//*************PROBLEM 4 - 11. Container With Most Water************* */
 //TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(1)
 /* ALGORITHM:
 - TAKE LEFT AND RIGHT OF THE ARRAY AND ASSIGNED VALUE AS FIRST AND LAST RESP.
@@ -277,7 +444,7 @@ var threeSum = function(nums) {
         }
         return result; */
 
-//*************PROBLEM 9 - 42. Trapping Rain Water - HARD************* */
+//*************PROBLEM 5- 42. Trapping Rain Water - HARD************* */
 //TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(1)
 
 /* 
@@ -305,11 +472,13 @@ return trapWater;
     
 };
  */
+
+
 //========================================================================//
 //------------------------SLIDING WINDOW----------------------------------//
 //========================================================================//
 
-//*************PROBLEM 10 -121. Best Time to Buy and Sell Stock ************** */
+//*************PROBLEM 1 -121. Best Time to Buy and Sell Stock ************** */
 //TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(1)
 /* 
 var maxProfit = function(prices) {
@@ -334,7 +503,7 @@ var maxProfit = function(prices) {
 }; 
 */
 
-//*************PROBLEM 11 - 3. Longest Substring Without Repeating Characters************** */
+//*************PROBLEM 2 : 3. Longest Substring Without Repeating Characters************** */
 //TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(n)
 
 /* var lengthOfLongestSubstring = function(s) {
@@ -353,12 +522,14 @@ var maxProfit = function(prices) {
         return longStr;
     };
      */
+
+
     
 //========================================================================//
 //-----------------------++  STACK  ++--------------------------------//
 //========================================================================//
 
-//************* PROBLEM 12 - 20. Valid Parentheses ************** */
+//************* PROBLEM 1: 20. Valid Parentheses ************** */
 //TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(n)
 
 /* var isValid = function(s) {
@@ -390,7 +561,7 @@ var maxProfit = function(prices) {
 }; */
 
 
-//************* PROBLEM 13 - 155. Min Stack ************** */
+//************* PROBLEM 2: 155. Min Stack ************** */
 //TIME COMPLEXITY O(1) || SPACE COMPLEXITY O(n)
 
 // var MinStack = function() {
@@ -448,7 +619,7 @@ var maxProfit = function(prices) {
 //  * var param_4 = obj.getMin()
 //  */
  
-//************* PROBLEM 14 - 150. Evaluate Reverse Polish Notation ************** */
+//************* PROBLEM 3: 150. Evaluate Reverse Polish Notation ************** */
 //TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(n)
 
 /* const Operator = {
@@ -474,7 +645,7 @@ var evalRPN = function(tokens) {
    
 }; */
 
-//************* PROBLEM 15 - 704. Binary Search  ************** */
+//************* PROBLEM 4: 704. Binary Search  ************** */
 //TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(1)
 /* Algorithm
 - Initialise left and right pointers : left = 0, right = n - 1.
@@ -506,7 +677,7 @@ var evalRPN = function(tokens) {
    
      return -1;
 }; */
-//************* PROBLEM 16 - 74. Search a 2D Matrix ************** */
+//************* PROBLEM 5: 74. Search a 2D Matrix ************** */
 //TIME COMPLEXITY O(nlogm)|| SPACE COMPLEXITY O(1)
 
 //++++++++++++++ SOLUTION 1 ++++++++++++++++++++++//
@@ -556,7 +727,7 @@ var evalRPN = function(tokens) {
 //-----------------------++ LINKED LIST ++--------------------------------//
 //========================================================================//
 
-//************* PROBLEM 17- 206. Reverse Linked List************** */
+//************* PROBLEM 1: 206. Reverse Linked List************** */
 //TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(1)
 /* ALGORITHM :
 //https://www.geeksforgeeks.org/reverse-a-linked-list/
@@ -587,7 +758,7 @@ curr = next
     return prev;
 }; */
 
-//************* PROBLEM 18 - 21. Merge Two Sorted Lists **************** */
+//************* PROBLEM 2:- 21. Merge Two Sorted Lists **************** */
 
 //TIME COMPLEXITY O(m + n) || SPACE COMPLEXITY O(m + n)
 //https://duncan-mcardle.medium.com/leetcode-problem-21-merge-two-sorted-lists-javascript-b5a4de3da319
@@ -658,7 +829,7 @@ Approach: The recursive solution can be formed, given the linked lists are sorte
  */
 //==========================================================================
 
-//****************** PROBLEM 19 - 141. Linked List Cycle **************** */
+//****************** PROBLEM 3:- 141. Linked List Cycle **************** */
 //TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(1)
 /*
 ALGORITHM :
@@ -685,3 +856,48 @@ The "slow pointer moves one step" at a time while the "fast pointer moves two st
     return false;
     
 }; */
+
+//****************** PROBLEM 4:- 143. Reorder List**************** */
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(1)
+
+/* var reorderList = function(head) {
+    if(!head) return;
+       
+   //Frist we need to find the middle pointer using slow fast algo.
+       
+       let slow = head, fast = head;
+       while(fast && fast.next){
+           slow = slow.next;
+           fast = fast.next.next;
+       }
+       
+   // Now we get the middle pointer so we can reverse the right side nodes of the middle.
+       
+       let curr = slow;
+       let prev = null;
+       while(curr){
+           let next  = curr.next;
+           curr.next = prev;
+           prev = curr;
+           curr = next;
+       }
+       
+   // Now we got the reverse of the second half so we can merge both together fist half and second half.
+       
+       let first = head, second  = prev; // prev is the second half head
+       
+       while(second.next){
+           temp = first.next;
+           first.next = second;
+           first = temp;
+           
+           temp = second.next;
+           second.next = first;
+           second = temp;
+       }
+       
+   }; 
+   */
+  
+  //****************** PROBLEM 5: *************************** */
+     //TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(1)
