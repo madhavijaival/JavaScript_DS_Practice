@@ -52,10 +52,12 @@
       for(let i=0; i<s.length; i++){
           if(!map[s[i]]) map[s[i]] = 0;
           map[s[i]]++;
+          //Counting the frequency of character incrementing.
       }
       for(let j=0; j<t.length ; j++){
           if(!map[t[j]]) return false;
           map[t[j]]--;
+          //decrementing the frequency of the character.
       }
       return true;
   };
@@ -567,6 +569,7 @@ var maxProfit = function(prices) {
 // var MinStack = function() {
    
 //     this.stack =[];
+       // to store minimum value only
 //     this.minStack=[];
       
 // };
@@ -642,9 +645,93 @@ var evalRPN = function(tokens) {
         }
     }
     return stack.pop();
-   
-}; */
 
+
+//************* PROBLEM 4: 739. Daily Temperatures************** */
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(n)
+/* 
+var dailyTemperatures = function(temperatures) {
+    //fill the array with 0's
+   let warmer = Array(temperatures.length).fill(0);
+   // create stack to store temperatur and index
+   const stack =[];
+   //loop through an array
+   for(let i =0; i < temperatures.length; i++){
+       //check is stack is non empty and stack of top is less than the temperature
+       while( stack.length !== 0 && stack[stack.length - 1][0]< temperatures[i]){
+           //if condition true then pop the value from stack and add to the temp and index
+           const [temp, idx] = stack.pop();
+           //poped index value put to output array i - idx
+           warmer[idx] = i - idx;
+       }
+       //push the value to the stack temperature and it's index value;
+       stack.push([temperatures[i], i]);
+   }
+return warmer;
+   
+};
+ */
+//************* PROBLEM 5: 22. Generate Parentheses************** */
+                //Using Backtracking
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(n)
+/* 
+var generateParenthesis = function(n) {
+    //Only add open Paranthesis if open < n
+        //Only add closing paranthesis if close < open
+        //valid IIF open == close == n
+        
+        const combine=[];
+        const current =[];
+        
+        function generatePar(openP, closeP){
+            if(current.length == n*2){
+                combine.push(current.join(''));
+                return;
+            }
+            if(openP < n){
+                current.push('(');
+                generatePar(openP + 1, closeP);
+                current.pop();
+            }
+            if(closeP < openP){
+                current.push(')');
+                generatePar(openP, closeP + 1);
+                current.pop();
+            }
+        }
+        generatePar(0, 0);
+        
+        return combine;
+    };
+ */
+//***************** PROBLEM 6: 853. Car Fleet**************************** */
+//TIME COMPLEXITY O(nlog n) || SPACE COMPLEXITY O(n)
+/* 
+    var carFleet = function(target, position, speed) {
+    
+        const combined = position.map((carPos, carSp)=>{
+            return [carPos, speed[carSp]] 
+        }).sort((a,b)=> a[0] - b[0]);
+        
+        let stack=[];
+        
+        for(let i = combined.length-1; i > -1; i--){
+             
+            stack.push((target - combined[i][0]) / combined[i][1]);
+            
+            if(stack.length >=2 && stack[stack.length-1] <= stack[stack.length - 2]){
+                stack.pop();
+            }
+        }
+        
+        return stack.length;
+    };  
+ */
+
+    
+//========================================================================//
+//-----------------------++  Binary Search  ++--------------------------------//
+//========================================================================//
 //************* PROBLEM 4: 704. Binary Search  ************** */
 //TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(1)
 /* Algorithm
