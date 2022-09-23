@@ -185,7 +185,7 @@ let result = {};
 */
 //======================================================================//
 
-//******************PROBLEM 7 :  36. Valid Sudoku*******************/
+//******************PROBLEM 7 :  36. Valid Sudoku *******************/
 //Time Complexity O(n^2) || Space Complexity O(n^2)
 /* 
 var isValidSudoku = function(board) {
@@ -732,7 +732,7 @@ var generateParenthesis = function(n) {
 //========================================================================//
 //-----------------------++  Binary Search  ++--------------------------------//
 //========================================================================//
-//************* PROBLEM 4: 704. Binary Search  ************** */
+//************* PROBLEM 1: 704. Binary Search  ************** */
 //TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(1)
 /* Algorithm
 - Initialise left and right pointers : left = 0, right = n - 1.
@@ -764,7 +764,7 @@ var generateParenthesis = function(n) {
    
      return -1;
 }; */
-//************* PROBLEM 5: 74. Search a 2D Matrix ************** */
+//************* PROBLEM 2: 74. Search a 2D Matrix ************** */
 //TIME COMPLEXITY O(nlogm)|| SPACE COMPLEXITY O(1)
 
 //++++++++++++++ SOLUTION 1 ++++++++++++++++++++++//
@@ -809,6 +809,55 @@ var generateParenthesis = function(n) {
     return false;
 }; 
 */
+
+//************* PROBLEM 3: 875. Koko Eating Bananas ************** */
+//TIME COMPLEXITY O(n log m)|| SPACE COMPLEXITY O(1)
+/* 
+Algorithm:
+- Initialize the two boundaries of the binary search as left = 1left=1, right = max(piles)right=max(piles).
+- Get the middle value from leftleft and rightright, that is, middle = (left + right) / 2middle=(left+right)/2, 
+  this is Koko's eating speed during this iteration.
+- Iterate over the piles and check if Koko can eat all the piles within hh hours given this eating speed of middlemiddle.
+- If Koko can finish all the piles within hh hours, set rightright equal to middlemiddle signifying that all speeds 
+   greater than middlemiddle are workable but less desirable by Koko. Otherwise, set leftleft equal to middle + 1middle+1 
+   signifying that all speeds less than or equal to middlemiddle are not workable.
+- Repeat the steps 2, 3, and 4 until the two boundaries overlap, i.e., left = rightleft=right, which means that we have 
+  found the minimum speed by which Koko could finish eating all the piles within hh hours. We can return either leftleft or 
+  rightright as the answer.
+ */
+/* 
+var minEatingSpeed = function(piles, h) {
+    
+    let left =1;
+    let right = Math.max(...piles);
+    
+    while(left < right){
+        
+        const mid = Math.floor((left + right) / 2);
+        const hourSpent = countPiles(mid, piles);
+        
+        if(hourSpent > h){
+            left = mid + 1;
+        }
+        if (hourSpent<=h){
+            right = mid;
+        }  
+    }
+    return right;
+};
+
+const countPiles = (mid, piles, hours=0 )=> {
+    
+    for(const pile of piles){
+        hours += Math.ceil(pile/mid);
+    }
+    
+    return hours;
+}
+ */
+
+
+
 
 //========================================================================//
 //-----------------------++ LINKED LIST ++--------------------------------//
@@ -986,5 +1035,82 @@ The "slow pointer moves one step" at a time while the "fast pointer moves two st
    }; 
    */
   
-  //****************** PROBLEM 5: *************************** */
-     //TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(1)
+
+
+//========================================================================//
+//-----------------------++ TREES ++--------------------------------//
+//========================================================================//
+//****************** PROBLEM 1: 226. Invert Binary Tree*************************** */
+/*
+Algorithm:
+The inverse of an empty tree is the empty tree. The inverse of a tree with root rr, and subtrees right and left, 
+is a tree with root rr, whose right subtree is the inverse of left, and whose left subtree is the inverse of right.
+ */
+
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(n)
+     /* var invertTree = function(root) {
+        if(!root) return root;
+        
+        let temp =root.left;
+        root.left = root.right;
+        root.right =temp;
+        
+        invertTree(root.left);
+        invertTree(root.right);
+        
+        return root;
+        
+    } */
+
+
+
+//****************** PROBLEM 2: 104. Maximum Depth of Binary Tree *************************** */
+/*
+Depth of Tree: Intuition By definition, the maximum depth of a binary tree is the maximum number of 
+steps to reach a leaf node from the root node. 
+
+ */
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(n)
+/* var maxDepth = function(root) {
+    
+    // //Using DFS Recursive algo
+    // if(!root) return root;
+    // return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
+    
+    
+    //DFS without Recursive using preorder DFS
+    let maxDepth =0;
+    
+    let DFS =(node, depth)=>{
+        if(!node) return maxDepth;
+        if(maxDepth < depth) maxDepth = depth;
+        DFS(node.left, depth+1);
+        DFS(node.right, depth+1);
+    }
+    DFS(root, 1);
+    
+    return maxDepth;  
+    
+};
+ */
+
+//****************** PROBLEM 3: 543. Diameter of Binary Tree*************************** */
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(n)
+
+/* var diameterOfBinaryTree = function(root) {
+    let dia = 0;
+    
+    function DFS(root){
+        if(!root) return -1;
+        
+        let left = DFS(root.left);
+        let right = DFS(root.right);
+        
+        dia =Math.max(dia, 2 + left + right);
+        
+        return 1 + Math.max(left, right);
+    }
+    DFS(root);
+    
+    return dia;
+}; */
