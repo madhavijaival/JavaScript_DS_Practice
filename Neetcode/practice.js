@@ -1114,3 +1114,298 @@ steps to reach a leaf node from the root node.
     
     return dia;
 }; */
+
+//****************** PROBLEM 4: 102. Binary Tree Level Order Traversal*************************** */
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(n)
+//BFS travaersal
+
+/* var levelOrder = function(root) {
+    
+    if(!root) return [];
+    
+    let result = [];
+    let queue  = [root];
+    
+   while(queue.length){
+       const len = queue.length;
+       const curr_val =[];
+       
+       for(let i=0; i< len; i++){
+           let node = queue.shift();
+           curr_val.push(node.val);
+           
+           if(node.left) queue.push(node.left);
+           if(node.right) queue.push(node.right);
+       }
+       result.push(curr_val);
+   }
+    return result;
+    
+};
+
+ */
+
+//****************** PROBLEM 5: 110. Balanced Binary Tree *************************** */
+/*
+For this problem, a height-balanced binary tree is defined as:
+a binary tree in which the left and right subtrees of every node differ in height by no more than 1. 
+ */
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(n)
+/* var isBalanced = function(root) {
+    // create variable assign it as a true 
+       let balanced = true; 
+      
+      function DFS(root, depth = 1) {
+          //If answer === false, we have already discovered tree is imbalanced.
+      //Return to exit recursion asap.
+          
+           if(!balanced) return 0;
+          
+          //If !node, we know the one above in recursion level is valid, but current is not.
+      //We return depth - 1.
+          
+           if (!root) return depth - 1;
+          
+      //We get max depth of left and right at all levels of recursion.  If imbalanced on
+      //any level, I.e. - abs(left - right) > 1, we set answer to false.  Answer is later returned.
+          const left = DFS(root.left, depth + 1 );
+          const right = DFS(root.right, depth + 1 );
+          
+          if(Math.abs(left - right) > 1){
+              balanced = false;
+          }
+          return Math.max(left, right); 
+      }
+      DFS(root);
+      
+      return balanced;
+  }; 
+  */
+
+//****************** PROBLEM 6: 100. Same Tree*************************** */
+/*
+Approach 1: Recursion
+Intuition
+The simplest strategy here is to use recursion. 
+Check if p and q nodes are not None, and their values are equal. 
+If all checks are OK, do the same for the child nodes recursively. 
+ */
+
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(n)
+/* 
+var isSameTree = function(p, q) { 
+    
+    if(p === null && q === null){
+        return true;
+    }
+    if(p === null || q === null){
+        return false;
+    }
+    if(p.val !== q.val){
+        return false;
+    } 
+    return  isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+    
+}; 
+*/
+
+//****************** PROBLEM 7: 572. Subtree of Another Tree *************************** */
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(n)
+/* var isSubtree = function(root, subRoot) {
+    
+    if(!root) return false;
+    if (!subRoot) return false;
+    
+    // check for subtree
+    
+    if(isSame(root, subRoot)) return true;
+    
+    return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot);
+    
+    
+    // use same tree function over here
+    
+    function isSame(t, s){
+        
+        if(t === null && s === null){
+            return true;
+        }
+        if(t === null || s === null){
+            return false
+        }
+        return (s.val === t.val) 
+        && isSame(t.left, s.left) 
+        && isSame(t.right, s.right);        
+    }
+}; 
+*/
+
+
+//****************** PROBLEM 8: 235. Lowest Common Ancestor of a Binary Search Tree *************************** */
+/* 
+Algorithm:
+- Start traversing the tree from the root node.
+- If both the nodes p and q are in the right subtree, then continue the search with right subtree starting step 1.
+- If both the nodes p and q are in the left subtree, then continue the search with left subtree starting step 1.
+- If both step 2 and step 3 are not true, this means we have found the node which is common to node p's and q's subtrees.
+ and hence we return this common node as the LCA.
+ */
+//++++++++++++ SOLUTION 1 : Approach 1: Iterative Approach+++++++++++++++++++++//
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(1)
+/* 
+var lowestCommonAncestor = function(root, p, q) {
+    
+    while(root !== null){
+        if(p.val > root.val && q.val > root.val){
+            root =root.right;
+            continue;
+        }
+         if(p.val < root.val && q.val < root.val){
+            root =root.left;
+            continue;
+        }
+        break;    
+    }
+    
+    return root;
+    
+};*/
+
+//++++++++++++ SOLUTION 2: Approach 2: Recursive Approach +++++++++++++++++++++//
+
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(H)
+/* if(p.val > root.val && q.val > root.val){
+        return lowestCommonAncestor(root.right, p, q);
+    }else if(p.val < root.val && q.val < root.val){
+        return lowestCommonAncestor(root.left, p, q);
+    }else{
+        return root;
+    }
+ */
+
+//****************** PROBLEM 9:102. Binary Tree Level Order Traversal *************************** */
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(n)
+
+/* var levelOrder = function(root) {
+    if (!root) return [];
+    const res = [];
+    const queue = [root];
+    
+while(queue.length){
+        const len = queue.length;
+        const level = [];
+  for(let i =0; i< len ; i++){
+        let node = queue.shift();
+        level.push(node.val);
+        
+        if(node.left) queue.push(node.left);
+        if(node.right) queue.push(node.right);    
+    }
+       res.push(level);
+    }
+    return res;
+}; */
+
+//****************** PROBLEM 10: 199. Binary Tree Right Side View *************************** */
+/* 
+Algorithm:
+1. Initiate the arr of the right side view result.
+2. Initiate the queue by adding a root.
+3. While the queue is not empty:
+  - Write down the length of the current level: levelLength = queue.size().
+  - Iterate over i from 0 to < len (que.len):
+     - pop the current node from the queue: node = queue.shift().
+     - If i == len - 1, then it's the last node in the current level, push it to rightsize list.
+     - Add first left and then right child node into the queue.
+- Return result.
+ */
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(D) Space complexity: O(D) to keep the queues, where D is a tree diameter.
+// Let's use the last level to estimate the queue size.This level could contain up to N/2 tree nodes in the case of complete binary tree.
+
+/* var rightSideView = function(root) {
+    
+    if(!root) return [];
+    const result =[];
+    const queue =[root];
+    
+while(queue.length){
+        const len = queue.length;
+        let level =0
+    for(let i =0; i<len ; i++){
+        let node = queue.shift();
+        level = node;
+        if(node.left) queue.push(node.left);
+        if(node.right) queue.push(node.right);
+    }
+        result.push(level.val);
+    }
+    return result;
+    
+}; */
+
+
+//****************** PROBLEM 11: 1448. Count Good Nodes in Binary Tree *************************** */
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(n)
+
+/* var goodNodes = function(root) {
+    let count = 0;
+       
+       let DFS = (node, maxVal)=>{
+           if(!node) return;  
+           if(maxVal <= node.val)
+               count++;
+           maxVal =Math.max(maxVal, node.val);
+           DFS(node.left, maxVal);
+           DFS(node.right, maxVal);       
+       }
+       
+       DFS(root, root.val);
+       return count;
+   }; 
+   */
+
+//****************** PROBLEM 12: 98. Validate Binary Search Tree*************************** */
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(n)
+
+/* 
+var isValidBST = function(root) {
+    
+    if(!root) return true; // Sanity check for passing test case '[]'
+     
+  function DFS(node, left, right){
+      if(!node) return true; // We hit the end of the path
+      
+      // current node's val doesn't satisfy the BST rules
+      if((left !== null && left >= node.val)||(right !== null && right <= node.val)){
+          return false;
+      }
+       // Continue to scan left and right
+      return DFS(node.left, left, node.val) && DFS(node.right, node.val, right);
+  }
+    
+    return DFS(root, null, null);
+    
+}; */
+
+
+//****************** PROBLEM 12: 230. Kth Smallest Element in a BST *************************** */
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(n)
+//Inorder Traversal//
+/* var kthSmallest = function(root, k) {
+    let arr =[];
+    
+    function inOrder(root){
+        if(!root) return;
+        
+        inOrder(root.left);
+        arr.push(root.val);
+        inOrder(root.right);
+    }
+    inOrder(root);
+    
+    return arr[k-1];
+    
+}; */
+
+//****************** PROBLEM 12: 230. Kth Smallest Element in a BST *************************** */
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(n)
