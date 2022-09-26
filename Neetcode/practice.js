@@ -415,7 +415,7 @@ var threeSum = function(nums) {
 - TAKE LEFT AND RIGHT OF THE ARRAY AND ASSIGNED VALUE AS FIRST AND LAST RESP.
 - COUNT AREA OF THE WATER FILL WHICH IS WIDTH * HEIGHT (WIDTH IS R - L AND TAKE MINIMUM HEIGHT FROM L AND R ).
 - AFTER CALCULATE THE AREA STORE THE AREA COMPARE WITH THE PREVIOUS RESULT AND STORE MAX AREA RESULT.
-- TO MOVE THE POITER CHECK IF THE HEIGHT[L] < HEIGHT[R] THEN MOVE LEFT POINTER BY 1 ELSE MOVE RIGHT POINTER BY -1.
+- TO MOVE THE POINTER CHECK IF THE HEIGHT[L] < HEIGHT[R] THEN MOVE LEFT POINTER BY 1 ELSE MOVE RIGHT POINTER BY -1.
 - IN THE LAST RETURN THE RESULT.
  */
 
@@ -1407,5 +1407,84 @@ var isValidBST = function(root) {
     
 }; */
 
-//****************** PROBLEM 12: 230. Kth Smallest Element in a BST *************************** */
-//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(n)
+//========================================================================//
+//-----------------------++ HEAP ++--------------------------------//
+//========================================================================//
+//****************** PROBLEM 1: 1046. Last Stone Weight *************************** */
+//TIME COMPLEXITY O(n log n) || SPACE COMPLEXITY O(n)
+/* 
+var lastStoneWeight = function(stones) {
+    if(stones.length < 2) return stones;
+    //Sort the stone array
+    stones.sort((a,b)=> a - b);
+    //get last two element by poping
+    let first  = stones.pop();
+    let second = stones.pop();
+    // as it will be in sorted order then  get difference of them 
+    stones.push(Math.abs(first - second));
+    // call recursively
+    return lastStoneWeight(stones);
+};
+ */
+//****************** PROBLEM 2:  *************************** */
+//TIME COMPLEXITY O(n log n) || SPACE COMPLEXITY O(n)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//========================================================================//
+//-----------------------++ BIT MANIPULATION ++--------------------------------//
+//========================================================================//
+
+//****************** PROBLEM 1: 136. Single Number *************************** */
+/* Concept:
+If we take XOR of zero and some bit, it will return that bit
+   - a ⊕ 0 = a
+If we take XOR of two same bits, it will return 0
+   - a ⊕ a = 0 
+   */
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(1)
+
+/* var singleNumber = function(nums) {
+    
+    let x = 0;
+    
+    for(let num of nums ){
+        
+        x ^= num;
+    }
+    
+    return x ;
+}; */
+
+
+//****************** PROBLEM 2: 191. Number of 1 Bits *************************** */
+//TIME COMPLEXITY O(1) || SPACE COMPLEXITY O(1)
+
+/* var hammingWeight = function(n) {
+    
+    let res =0;
+    
+    while(n){
+        
+        n &= (n-1);
+        res +=1;
+    }
+    return res;
+}; */
+
+//****************** PROBLEM 3:  *************************** */
+//TIME COMPLEXITY O(1) || SPACE COMPLEXITY O(1)
