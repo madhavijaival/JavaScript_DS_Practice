@@ -524,6 +524,37 @@ var maxProfit = function(prices) {
         return longStr;
     };
      */
+//*************PROBLEM 3 : 3. Longest Substring Without Repeating Characters************** */
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(n)
+/* var characterReplacement = function(s, k) {
+    
+    let map = {};
+    let left = 0;
+    let maxFreq =0, result =0;
+        
+        for(let right =0; right< s.length; right++){
+            map[s[right]] = map[s[right]] ? map[s[right]] + 1 : 1;
+            
+            maxFreq= Math.max(maxFreq, map[s[right]]);
+        
+        //window = right -left+1
+            
+        if(((right - left + 1) - maxFreq) > k){
+            map[s[left]] -= 1;
+            left += 1;
+          }
+            result = Math.max(result,right - left + 1);
+            
+        }
+        return result;
+        
+  }; */
+
+//*************PROBLEM 4 : ************** */
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(n)
+
+
+
 
 
     
@@ -810,7 +841,85 @@ var generateParenthesis = function(n) {
 }; 
 */
 
-//************* PROBLEM 3: 875. Koko Eating Bananas ************** */
+
+//************* PROBLEM 3:33. Search in Rotated Sorted Array ********************** */
+//TIME COMPLEXITY O( log n)|| SPACE COMPLEXITY O(1)
+
+/* var search = function(nums, target) {
+    let left =0, right =nums.length-1;
+    let mid;
+    while(left <= right){
+        
+       mid = Math.floor((right + left)/2);
+        
+        if(nums[mid] === target)return mid;
+        
+        if(nums[left] <= nums[mid]){
+            if(nums[left] <= target && target <= nums[mid]) right= mid-1;
+            else left =mid +1;
+        }else {
+            if(nums[mid] <=target && target <= nums[right]) left = mid+1;
+          else  right= mid-1;
+        }
+    }
+    return -1;
+}; */
+
+//************* PROBLEM 4: 153. Find Minimum in Rotated Sorted Array********************* */
+//TIME COMPLEXITY O( log n)|| SPACE COMPLEXITY O(1)
+/* 
+var findMin = function(nums) {
+     // initializing left and right pointers.
+    let left =0, right = nums.length-1;
+    let mid;
+    
+    // if the last element is greater than the first element then there is no
+        // rotation.
+        // e.g. 1 < 2 < 3 < 4 < 5 < 7. Already sorted array.
+        // Hence the smallest element is first element. A[0]
+    if(nums[right] > nums[left]){
+        return nums[left];
+    }
+    
+     // Binary search way
+    while(left <=  right){
+        // Find the mid element
+        mid = Math.floor((left+ right)/2);
+        
+        //if the mid element is greater than its next element then mid+1 element is the
+            // smallest
+            // This point would be the point of change. From higher to lower value.
+        if(nums[mid] > nums[mid+1]){
+            return nums[mid+1];
+        }
+         // if the mid element is lesser than its previous element then mid element is
+            // the smallest
+        if(nums[mid] < nums[mid-1]){
+            return nums[mid];
+        }
+          // if the mid elements value is greater than the 0th element this means
+            // the least value is still somewhere to the right as we are still dealing with
+            // elements
+            // greater than nums[0]
+        if(nums[mid] > nums[0]){
+            left = mid+1;
+        }else{
+            // if nums[0] is greater than the mid value then this means the smallest value
+                // is somewhere to
+                // the left
+            right =mid-1;
+        }
+    }
+    return nums;
+    
+};*/
+
+
+
+
+
+
+//************* PROBLEM 5: 875. Koko Eating Bananas ************** */
 //TIME COMPLEXITY O(n log m)|| SPACE COMPLEXITY O(1)
 /* 
 Algorithm:
@@ -1486,5 +1595,96 @@ If we take XOR of two same bits, it will return 0
     return res;
 }; */
 
-//****************** PROBLEM 3:  *************************** */
-//TIME COMPLEXITY O(1) || SPACE COMPLEXITY O(1)
+
+//========================================================================//
+//-----------------------++  GRAPH  ++--------------------------------//
+//========================================================================//
+//************* PROBLEM 1: 463. Island Perimeter ************** */
+//https://leetcode.com/problems/island-perimeter/discuss/1485601/JavaScript-Whiteboard
+//TIME COMPLEXITY O(m * n) || SPACE COMPLEXITY O(1)
+/* 
+var islandPerimeter = function(grid) {
+  
+    let height = grid.length;
+    let width = grid[0].length;
+    
+    let count = 0;
+    
+    for(let row =0; row< height; row++){
+        for(let col =0; col<width; col++){
+            if(grid[row][col] === 1){
+                
+                count+=4;
+                
+             //if the above square is "1" then subtract it.
+            if(row >0 && grid[row-1][col] === 1 ) count--;
+                //if the below square is "1" then subtract it.
+            if(row < height-1 && grid[row+1][col] ===1)count--;
+                //if the left square is "1" then subtract it.
+            if(grid[row][col-1] === 1)count--;
+                //if the right square is "1" then subtract it.
+            if(grid[row][col+1] === 1)count--;
+        }
+       }
+    }
+    return count;
+}; */
+
+//****************** PROBLEM 2: 200. Number of Islands**************** */
+//Notes:https://www.youtube.com/watch?v=__98uL6wst8
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(1)& wors case O(mn * memory for each call)
+/* 
+var numIslands = function(grid) {
+    if(!grid) return ;
+    let height =grid.length;
+    let width =grid[0].length;
+    let  isIsland =0;
+    
+    for(let r =0; r< height; r++){
+        for(let c =0; c< width; c++){
+            if(grid[r][c] === "1"){
+                
+                isMarkIsland(grid, r, c, height, width);
+                isIsland +=1;
+            }
+        }
+    }
+    return isIsland;
+    
+};
+
+function isMarkIsland(arr, x, y, row, col){
+    
+    if(x < 0|| x>= row || y < 0 || y >= col || arr[x][y] !== "1"){
+        return;
+    }
+    arr[x][y] ="2";
+    isMarkIsland(arr, x+1, y, row, col);
+    isMarkIsland(arr, x-1, y, row, col);
+    isMarkIsland(arr, x, y-1, row, col);
+    isMarkIsland(arr, x, y+1, row, col);
+    
+}
+ */
+//****************** PROBLEM  3 :  133. Clone Graph**************** */
+//TIME COMPLEXITY O(n + m) || SPACE COMPLEXITY O(n)
+//DFS solution 
+/* var cloneGraph = function(node) {
+    return dfsNewNode(node);
+    
+};
+
+function dfsNewNode(root, map = new Map()){
+    if(!root) return root;
+    
+    if(map.has(root)) return map.get(root);
+    const newRoot = new Node(root.val);
+    map.set(root, newRoot);
+    for(let n of root.neighbors){
+        newRoot.neighbors.push(dfsNewNode(n , map));
+    }
+    return newRoot;
+} */
+
+//****************** PROBLEM  4: ********************** */
+//TIME COMPLEXITY O(n + m) || SPACE COMPLEXITY O(n)
