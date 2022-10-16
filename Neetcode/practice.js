@@ -1,4 +1,33 @@
 //---------------------------ARRAY AND HASHING------------------------------//
+//============PROBLEM Class = 12. Integer to Roman==========================//
+//Time complexity: O(log n) || Space complexity: O(n)
+/* var romanNumberValues = [
+    1, 4, 5, 9,
+    10, 40, 50, 90,
+    100, 400, 500, 900,
+    1000
+];
+var romanNumbers = [
+    'I', 'IV', 'V', 'IX',
+    'X', 'XL', 'L', 'XC',
+    'C', 'CD', 'D', 'CM',
+    'M'
+];
+
+// Input: integer [1, 3999]
+function convertToRoman(num) {
+    var res = '';
+    for (var i=romanNumbers.length-1; num > 0; ) {
+        var val = romanNumberValues[i];
+        if (num - val >= 0) {
+            num -= val;
+            res += romanNumbers[i];
+        } else {
+            --i;
+        }
+    }
+    return res;
+} */
 
 //============PROBLEM 1.= 217. Contains Duplicate==========================//
 //Time complexity: O(n (log n)) || Space complexity: O(1)
