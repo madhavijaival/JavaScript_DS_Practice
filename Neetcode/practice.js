@@ -315,8 +315,80 @@ var decode = function(s) {
     return max;
 };
  */
- 
+ //******************PROBLEM 10 :  1299. Replace Elements with Greatest Element on Right Side*****************/
+//Time Complexity O(n) || Space Complexity O(1)
+//https://medium.com/@choudharyarpit99/replace-elements-with-greatest-element-on-right-side-fedec5bab280
 
+/* var replaceElements = function(arr) {
+    let len =arr.length;
+     let max = arr[len-1];
+     arr[len-1] = -1;
+     
+     for(let num = len -2; num >=0; num--){
+         let temp  = arr[num];
+         arr[num] = max;
+         if(temp > max ){
+             max =temp;
+         }
+     }
+    return arr;
+ }; */
+
+//******************PROBLEM 11 :  392. Is Subsequence*****************/
+//Time Complexity O(M) || Space Complexity O(1)
+/* ALGORITHM:
+1.Two Pointers and Greedy:
+i.We make a pointer of sChar and tChar for s and t respectively
+ii.	When we match a character from t, we move sChar pointer forward
+iii.If sChar is able to reach the end, we know s is subsequence of t
+iv.	Time complexity O(m)
+v.	Space complexity O(1)
+
+ */
+/*  var isSubsequence = function(s, t) {
+    if(s.length === null) return false;
+    let sChar = 0;
+    let tChar = 0;
+  
+    while(sChar < s.length && tChar < t.length){
+        if (s.charAt(sChar) === t.charAt(tChar)) {
+            
+            sChar++;
+            
+        }
+        
+        tChar++;
+        
+    }
+    return sChar === s.length;
+}; */
+
+//******************PROBLEM 12 :  58. Length of Last Word****************/
+//Time Complexity O(n) || Space Complexity O(1)
+/* ALGORITHM:
+-Assign the last word of the s to a new variable and len =0;
+-Apply while untill the last is greater than 0
+  - true then decrement value of last by 1
+  - check condition if s[last] is not empty char
+  - If true then len will increment by 1
+  -else if length is greter than 0 return it. 
+ */
+
+/* 
+var lengthOfLastWord = function(s) {
+    let last = s.length , len =0;
+  while(last > 0){
+      last--;
+      
+      if(s[last] !== ' '){
+          len++;
+      }
+      else if (len > 0){
+          return len;
+      }
+  }
+  return len;
+}; */
 //========================================================================//
 //------------------------TWO POINTERS--------------------------------------//
 //=======================================================================//
@@ -1545,6 +1617,92 @@ var isValidBST = function(root) {
     
 }; */
 
+//***************PROBLEM 13: 105. Construct Binary Tree from Preorder and Inorder Traversal******************** */
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(n)
+/* 
+var buildTree = function(preorder, inorder) {
+    if(!preorder.length || !inorder.length) return null;
+    
+    let root = new TreeNode(preorder[0]);
+    let mid = inorder.indexOf(preorder[0]);
+    
+    root.left = buildTree(preorder.slice(1, mid+1), inorder.slice(0, mid));
+    root.right =buildTree(preorder.slice(mid+1), inorder.slice(mid+1));
+    
+    return root;
+    
+};
+ */
+
+    
+//========================================================================//
+//-----------------------++  Tries  ++--------------------------------//
+//========================================================================//
+//****************** PROBLEM 1: 208. Implement Trie (Prefix Tree) *************************** */
+//TIME COMPLEXITY O(m) || SPACE COMPLEXITY O(1)
+/* 
+var Trie = function() {
+    this.childeren ={};
+};
+
+/** 
+ * @param {string} word
+ * @return {void}
+ *//*
+Trie.prototype.insert = function(word) {
+    let child = this;
+  for(let char of word){
+      if(!child.childeren[char]){
+          child.childeren[char] = new Trie();
+      }
+      child = child.childeren[char];
+  }
+    child.isWord = true;
+    
+};
+
+/** 
+ * @param {string} word
+ * @return {boolean}
+ *//*
+Trie.prototype.search = function(word) {
+    let child = this;
+    for(let char of word){
+        if(!child.childeren[char]){
+            return false;
+        }
+        child = child.childeren[char];
+    }
+    return child.isWord === true;
+};
+
+/** 
+ * @param {string} prefix
+ * @return {boolean}
+ *//*
+Trie.prototype.startsWith = function(prefix) {
+   let child = this;
+    for(let char of prefix){
+        if(!child.childeren[char]){
+            return false;
+        }
+        child = child.childeren[char];
+    }
+    return true;
+}; */
+/** 
+ * Your Trie object will be instantiated and called as such:
+ * var obj = new Trie()
+ * obj.insert(word)
+ * var param_2 = obj.search(word)
+ * var param_3 = obj.startsWith(prefix)
+ */
+
+//****************** PROBLEM 2: *************************** */
+//TIME COMPLEXITY O(m) || SPACE COMPLEXITY O(1)
+
+
+
 //========================================================================//
 //-----------------------++ HEAP ++--------------------------------//
 //========================================================================//
@@ -1611,18 +1769,57 @@ If we take XOR of two same bits, it will return 0
 
 //****************** PROBLEM 2: 191. Number of 1 Bits *************************** */
 //TIME COMPLEXITY O(1) || SPACE COMPLEXITY O(1)
+//https://www.youtube.com/watch?v=MLCq8rN2EWI
+//keep shifting 1 by n times
 
-/* var hammingWeight = function(n) {
-    
-    let res =0;
-    
-    while(n){
-        
-        n &= (n-1);
-        res +=1;
+/*var hammingWeight = function(n) {
+    let count =0;
+    for(let i =0; i< 32; i++){
+        //shifting 1 ith left position and anding with current number
+        // if the 1 & 1 =  1 then count will be increment 
+        if((1 << i) & n) count++;
     }
-    return res;
+    return count;
 }; */
+
+
+//****************** PROBLEM 3: 338. Counting Bits *************************** */
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(1)
+/* 
+Approach 4: DP + Last Set Bit
+Algorithm:
+we can also manipulate the last set bit.Last set bit is the rightmost set bit. 
+Setting that bit to zero with the bit trick,x &= x - 1, leads to the following transition function:
+P(x) = P(x & (x - 1)) +1
+ */
+/* 
+var countBits = function(n) {
+    let ans  = new  Array(n+1).fill(0);
+     for(let  i =1; i<= n;++i){
+         ans[i] = ans[i&(i-1)]+1;   
+     }
+     return ans;
+ };
+ */
+//****************** PROBLEM 4: 190. Reverse Bits  **************************** */
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(1)
+/* var reverseBits = function(n) {
+    
+    let result =0;
+     for(let i = 0; i< 32 ; i++){
+       // find the last bit of n
+         const lastBit = n & 1;
+         // shift the last bit of n to the left
+         const reverse = lastBit << (31 - i);
+         // insert the reversed last bit of n into the result
+         result |= reverse;
+         // the last bit of n is already taken care of, so we need to drop it
+          n>>>= 1;
+     }
+     // convert the result to an unsigned 32-bit integer
+     return result >>> 0;
+ };
+ */
 
 
 //========================================================================//
@@ -1715,5 +1912,52 @@ function dfsNewNode(root, map = new Map()){
     return newRoot;
 } */
 
-//****************** PROBLEM  4: ********************** */
-//TIME COMPLEXITY O(n + m) || SPACE COMPLEXITY O(n)
+//****************** PROBLEM  4: 417. Pacific Atlantic Water Flow ********************** */
+//TIME COMPLEXITY O(M*N) || SPACE COMPLEXITY O(M*N)
+/* 
+var pacificAtlantic = function(heights) {
+    let result  = [];
+    let min =-Infinity;
+    let rows = heights.length;
+    let cols = heights[0].length;
+    
+    let pacific = new Array(rows).fill().map(()=> new Array(cols).fill(0));
+     let  atlantic = new Array(rows).fill().map(()=> new Array(cols).fill(0));
+    
+    // left & right
+    for(let row =0 ; row< rows ; row++){
+        dfs(heights, row,  0, min, pacific)
+        dfs(heights, row, heights[0].length-1, min, atlantic);
+    }
+      // top & bottom
+    for(let col =0; col < cols; col++){
+        dfs(heights, 0, col, min, pacific)
+        dfs(heights, heights.length-1, col, min, atlantic);
+    }
+    for(let row =0; row< rows ; row++){
+        for(let col =0; col <cols ; col++){
+            if(pacific[row][col] === 1 && atlantic[row][col] ===1){
+                result.push([row, col]);
+            }
+        }
+    }
+    return result;
+};
+
+
+const dfs = (heights, r, c, preVal, ocean)=>{
+    if(r < 0 || c< 0 || r > heights.length-1 ||c > heights[0].length-1) return;
+    if(heights[r][c] < preVal) return;
+    if(ocean[r][c] === 1) return;
+    
+    ocean[r][c] = 1;
+    
+       dfs(heights, r-1, c, heights[r][c], ocean);
+       dfs(heights, r+1, c, heights[r][c], ocean);
+       dfs(heights, r, c-1, heights[r][c], ocean);
+       dfs(heights, r, c+1, heights[r][c], ocean);
+    
+} */
+
+//****************** PROBLEM  5:  ********************** */
+//TIME COMPLEXITY O(M*N) || SPACE COMPLEXITY O(M*N)
