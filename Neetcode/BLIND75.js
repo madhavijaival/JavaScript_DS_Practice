@@ -1,33 +1,4 @@
 //---------------------------ARRAY AND HASHING------------------------------//
-//============PROBLEM Class = 12. Integer to Roman==========================//
-//Time complexity: O(log n) || Space complexity: O(n)
-/* var romanNumberValues = [
-    1, 4, 5, 9,
-    10, 40, 50, 90,
-    100, 400, 500, 900,
-    1000
-];
-var romanNumbers = [
-    'I', 'IV', 'V', 'IX',
-    'X', 'XL', 'L', 'XC',
-    'C', 'CD', 'D', 'CM',
-    'M'
-];
-
-// Input: integer [1, 3999]
-function convertToRoman(num) {
-    var res = '';
-    for (var i=romanNumbers.length-1; num > 0; ) {
-        var val = romanNumberValues[i];
-        if (num - val >= 0) {
-            num -= val;
-            res += romanNumbers[i];
-        } else {
-            --i;
-        }
-    }
-    return res;
-} */
 
 //============PROBLEM 1.= 217. Contains Duplicate==========================//
 //Time complexity: O(n (log n)) || Space complexity: O(1)
@@ -214,52 +185,7 @@ let result = {};
 */
 //======================================================================//
 
-//******************PROBLEM 7 :  36. Valid Sudoku *******************/
-//Time Complexity O(n^2) || Space Complexity O(n^2)
-/* 
-var isValidSudoku = function(board) {
-   let row ={};
-    let col ={};
-    let square = {};
-    
-    for(let r = 0; r<9; r++){
-        for(let c =0; c<9; c++){
-            const num  = board[r][c];
-            
-            if(num === "."){
-                continue;
-            }
-            
-            //count subgrid
-            const grid = `${Math.floor(r/3)} ${Math.floor(c/3)}`;
-            
-            
-            if(!row[r]){
-                row[r] = new Set();
-            }
-            if(!col[c]){
-                col[c] = new Set();
-            }
-            if(!square[grid]){
-                square[grid] = new Set();
-            }
-            
-            if(row[r].has(num)||col[c].has(num)||square[grid].has(num)){
-                return false;
-            }
-           
-            row[r].add(num);
-            col[c].add(num);
-            square[grid].add(num);
-           
-        }
-    }
-    return true;
-};
-
-//======================================================================//
-
-//******************PROBLEM 8 : 271. Encode and Decode Strings*****************/
+//******************PROBLEM 7 : 271. Encode and Decode Strings*****************/
 //Time Complexity O(n) || Space Complexity O(n)
 /* var encode = function(strs) {
     
@@ -288,7 +214,7 @@ var decode = function(s) {
  */
 //====================================================================//
 
-//******************PROBLEM 9 : 128. Longest Consecutive Sequence*****************/
+//******************PROBLEM 8 : 128. Longest Consecutive Sequence*****************/
 //Time Complexity O(n) || Space Complexity O(n)
 
 /* var longestConsecutive = function(nums) {
@@ -315,80 +241,7 @@ var decode = function(s) {
     return max;
 };
  */
- //******************PROBLEM 10 :  1299. Replace Elements with Greatest Element on Right Side*****************/
-//Time Complexity O(n) || Space Complexity O(1)
-//https://medium.com/@choudharyarpit99/replace-elements-with-greatest-element-on-right-side-fedec5bab280
-
-/* var replaceElements = function(arr) {
-    let len =arr.length;
-     let max = arr[len-1];
-     arr[len-1] = -1;
-     
-     for(let num = len -2; num >=0; num--){
-         let temp  = arr[num];
-         arr[num] = max;
-         if(temp > max ){
-             max =temp;
-         }
-     }
-    return arr;
- }; */
-
-//******************PROBLEM 11 :  392. Is Subsequence*****************/
-//Time Complexity O(M) || Space Complexity O(1)
-/* ALGORITHM:
-1.Two Pointers and Greedy:
-i.We make a pointer of sChar and tChar for s and t respectively
-ii.	When we match a character from t, we move sChar pointer forward
-iii.If sChar is able to reach the end, we know s is subsequence of t
-iv.	Time complexity O(m)
-v.	Space complexity O(1)
-
- */
-/*  var isSubsequence = function(s, t) {
-    if(s.length === null) return false;
-    let sChar = 0;
-    let tChar = 0;
-  
-    while(sChar < s.length && tChar < t.length){
-        if (s.charAt(sChar) === t.charAt(tChar)) {
-            
-            sChar++;
-            
-        }
-        
-        tChar++;
-        
-    }
-    return sChar === s.length;
-}; */
-
-//******************PROBLEM 12 :  58. Length of Last Word****************/
-//Time Complexity O(n) || Space Complexity O(1)
-/* ALGORITHM:
--Assign the last word of the s to a new variable and len =0;
--Apply while untill the last is greater than 0
-  - true then decrement value of last by 1
-  - check condition if s[last] is not empty char
-  - If true then len will increment by 1
-  -else if length is greter than 0 return it. 
- */
-
-/* 
-var lengthOfLastWord = function(s) {
-    let last = s.length , len =0;
-  while(last > 0){
-      last--;
-      
-      if(s[last] !== ' '){
-          len++;
-      }
-      else if (len > 0){
-          return len;
-      }
-  }
-  return len;
-}; */
+ 
 //========================================================================//
 //------------------------TWO POINTERS--------------------------------------//
 //=======================================================================//
@@ -2104,6 +1957,7 @@ var longestPalindrome = function(s) {
 
 //****************** PROBLEM  1: 48. Rotate Image ********************** */
 //TIME COMPLEXITY O(M) || SPACE COMPLEXITY O(1)
+//https://www.youtube.com/watch?v=yIUryrv2I7I
 
 /* var rotate = function(matrix) {
     let n =  matrix.length;
@@ -2121,5 +1975,45 @@ var longestPalindrome = function(s) {
        }
 };
  */
-//****************** PROBLEM 2:  ********************** */
-//TIME COMPLEXITY O(M) || SPACE COMPLEXITY O(1)
+//****************** PROBLEM 2: 54. Spiral Matrix ********************** */
+//TIME COMPLEXITY O(M.N) || SPACE COMPLEXITY O(1)
+//https://www.youtube.com/watch?v=4mSTiSBk_iY&list=RDLV4mSTiSBk_iY&start_radio=1&rv=4mSTiSBk_iY&t=908
+/* 
+var spiralOrder = function(matrix) {
+    
+    // first take all the variable for top, bottom, left and right
+    let top = 0;
+    let bottom = matrix.length-1;
+    let left =0;
+    let right =matrix[0].length-1;
+    let result =[];
+    
+    //check the condition that top and left is not exceeds the limit.
+    while(top<= bottom && left <= right){
+        //left << right traversal 
+        for(let i = left; i<= right; i++)
+            result.push(matrix[top][i]);
+            top++;
+        
+        //top to bottom traversal
+        for(let i =top ;  i <= bottom; i++)
+            result.push(matrix[i][right]);
+            right--;
+        //travesal through right to left
+        if(top<= bottom){
+            for(let i = right; i>=left; i--)
+                result.push(matrix[bottom][i]);
+                bottom--;
+            
+        }
+        //trversal of bottom to top
+        if(left <=  right){
+            for(let i = bottom; i>= top; i--)
+                result.push(matrix[i][left])
+                left++;
+            
+        }
+    }
+    return result;
+};
+ */
