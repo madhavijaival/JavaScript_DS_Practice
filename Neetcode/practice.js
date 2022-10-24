@@ -1639,16 +1639,12 @@ var buildTree = function(preorder, inorder) {
 //-----------------------++  Tries  ++--------------------------------//
 //========================================================================//
 //****************** PROBLEM 1: 208. Implement Trie (Prefix Tree) *************************** */
-//TIME COMPLEXITY O(m) || SPACE COMPLEXITY O(1)
+//TIME COMPLEXITY O(M) || SPACE COMPLEXITY O(1)
 /* 
 var Trie = function() {
     this.childeren ={};
 };
 
-/** 
- * @param {string} word
- * @return {void}
- *//*
 Trie.prototype.insert = function(word) {
     let child = this;
   for(let char of word){
@@ -1661,10 +1657,6 @@ Trie.prototype.insert = function(word) {
     
 };
 
-/** 
- * @param {string} word
- * @return {boolean}
- *//*
 Trie.prototype.search = function(word) {
     let child = this;
     for(let char of word){
@@ -1675,11 +1667,6 @@ Trie.prototype.search = function(word) {
     }
     return child.isWord === true;
 };
-
-/** 
- * @param {string} prefix
- * @return {boolean}
- *//*
 Trie.prototype.startsWith = function(prefix) {
    let child = this;
     for(let char of prefix){
@@ -1690,18 +1677,48 @@ Trie.prototype.startsWith = function(prefix) {
     }
     return true;
 }; */
-/** 
- * Your Trie object will be instantiated and called as such:
- * var obj = new Trie()
- * obj.insert(word)
- * var param_2 = obj.search(word)
- * var param_3 = obj.startsWith(prefix)
- */
 
 //****************** PROBLEM 2: *************************** */
-//TIME COMPLEXITY O(m) || SPACE COMPLEXITY O(1)
+//TIME COMPLEXITY O(M) || SPACE COMPLEXITY O(M)
+/* 
+function TrieNode(isEnd = false){
+    this.isEnd = isEnd;
+    this.data =Object.create(null);
+    
+}
+var WordDictionary = function(isEnd = false) {
+    
+    this.dict = new TrieNode(); 
+};
 
+WordDictionary.prototype.addWord = function(word) {
+    let curr =this.dict;
+    for(let char of word){
+             curr.data[char] = curr.data[char] || new TrieNode();
+        curr = curr.data[char];
+    }
+    curr.isEnd = true;
+};
 
+WordDictionary.prototype.search = function(word) {
+      return searchWord(this.dict, word, 0);
+
+    function searchWord(dict, word, index) {
+        if (index === word.length) {
+            return dict.isEnd;
+        }
+        if (word[index] === '.') {
+            return Object.keys(dict.data).some((key) => searchWord(dict.data[key], word, index + 1));
+        }
+        if (dict.data[word[index]] === undefined) {
+            return false;
+        }
+        return searchWord(dict.data[word[index]], word, index + 1);
+    }
+    
+};
+
+ */
 
 //========================================================================//
 //-----------------------++ HEAP ++--------------------------------//
@@ -1724,15 +1741,6 @@ var lastStoneWeight = function(stones) {
  */
 //****************** PROBLEM 2:  *************************** */
 //TIME COMPLEXITY O(n log n) || SPACE COMPLEXITY O(n)
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1959,5 +1967,159 @@ const dfs = (heights, r, c, preVal, ocean)=>{
     
 } */
 
-//****************** PROBLEM  5:  ********************** */
-//TIME COMPLEXITY O(M*N) || SPACE COMPLEXITY O(M*N)
+
+
+
+//========================================================================//
+//-----------------------++ DYNAMIC PROGRAMMING ++--------------------------------//
+//========================================================================//
+//****************** PROBLEM  1: Climbing Stairs ********************** */
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(1)
+//Fib(n)=Fib(n−1)+Fib(n−2) || same as fibonacci problem.
+/* var climbStairs = function(n) {
+    if(n==1) return 1;
+    
+    let first  = 1;
+    let second = 2;
+    for(let i =3 ; i<= n; i++){
+        let temp = first + second;
+        first = second;
+        second = temp;
+    }
+    return second;
+}; */
+
+//****************** PROBLEM  2: 198. House Robber ********************** */
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(1)
+/*
+ALGORITHM:
+-  FIRST WE HAVE TO START WITH SANITY CHECK
+- THEN CREATE 3 VARIABLE CURRRENT , PREVIOUS AND TEMP
+- LOOP THROUGH THE ARRAY ELEMENTS 
+- ASSIGN TEMP WITH CURRENT AND CURRENT ASSIGN THE MAX VALUE OF PREVIOUS + CURR ARRAY ELEMENT AND CURRENT VALUE IT WILL RETURN MAX VALUE FROM BOTH.
+- THEN IN LAST RETURN THE CURRENT. 
+ */
+/* var rob = function(nums) {
+    if (!nums) return 0;
+    let prev = 0;
+    let curr = 0;
+    let temp;
+    
+    for(let num of nums){
+        temp  = curr;
+        curr = Math.max( num + prev, curr);
+        prev = temp;
+    }
+ return curr;
+    
+}; */
+
+//****************** PROBLEM  3: 213. House Robber II ********************** */
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(1)
+//Same as previous but little trick to not reach 1st and end together.
+/* 
+var rob = function(nums) {
+    if(nums.length === 0) return 0;
+    if(nums.length === 1) return nums[0];
+    return Math.max(
+      robHelper(nums, 0, nums.length-2),
+     robHelper(nums, 1, nums.length-1)
+    );   
+};
+
+function robHelper(nums,start, end){
+    let prev =0; 
+    let curr = 0;
+    
+    for(let i = start; i<=end; i++){
+        let temp = curr;
+        let val = nums[i]
+        curr =Math.max(val + prev , curr);
+        prev = temp;
+    }
+    return curr;
+} */
+
+//****************** PROBLEM  4: 5. Longest Palindromic Substring********************** */
+//TIME COMPLEXITY O(n^2) || SPACE COMPLEXITY O(1)
+
+/* 
+var longestPalindrome = function(s) {
+    dp = new Array(s.length).fill().map((i) => new Array(s.length));
+
+   
+   const DP =(i, j)=>{
+       if(i >= j) return 1;
+       if(dp[i][j] != undefined) return dp[i][j];
+       dp[i][j] = s[i] != s[j] ? 0: DP(i+1, j-1);
+       return dp[i][j];
+   };
+   
+   let len = s.length - 1;
+   while(len > 0){
+       for(let i =0; i + len < s.length; i++)
+           if(DP(i, i+len)) return s.slice(i, i+len+1);
+           len--;
+           
+   }
+   return s[0];
+   
+}; */
+
+//****************** PROBLEM  5: ********************** */
+//TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(1)
+
+
+
+
+//========================================================================//
+//-----------------------++ INTERVALS ++--------------------------------//
+//========================================================================//
+//****************** PROBLEM  1: 252. Meeting Rooms ********************** */
+//TIME COMPLEXITY O(n log n ) || SPACE COMPLEXITY O(1)
+
+/* var canAttendMeetings = function(intervals) {
+    // [[7,10],[2,4]]
+    //Sort the intervals of  the array by increasing order
+    intervals.sort((a,b)=> a[0] - b[0]); ////[[2,4],[7,10]]
+    //loop through an intervals array
+    for(let i = 0; i< intervals.length-1; i++){
+        //take end of the 1st intervals - 4  and starting of the sencond intervals - 7
+        //if  4 is not > 7 so it will simply back to the main and return true;
+        if(intervals[i][1] > intervals[i+1][0]) return false;
+        //if the end of previous interval is greater than the start of the current intervals      then return fals
+    }
+    return true;
+};
+ */
+
+
+
+
+
+
+//========================================================================//
+//-----------------------++ MATH AND GEOMETRY ++--------------------------------//
+//========================================================================//
+
+//****************** PROBLEM  1: 48. Rotate Image ********************** */
+//TIME COMPLEXITY O(M) || SPACE COMPLEXITY O(1)
+
+/* var rotate = function(matrix) {
+    let n =  matrix.length;
+   //Matrix transpose
+   for(let i = 0; i<n; i++){
+       for(let j =0; j<=i ; j++){
+           let temp =matrix[i][j];
+           matrix[i][j] = matrix[j][i]
+           matrix[j][i] =temp;
+       }
+   }
+   // reverse the matrix
+    for (var k=0; k<n; k++){
+       matrix[k].reverse();
+       }
+};
+ */
+//****************** PROBLEM 2:  ********************** */
+//TIME COMPLEXITY O(M) || SPACE COMPLEXITY O(1)
