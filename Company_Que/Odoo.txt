@@ -1,0 +1,173 @@
+//+++++++++++++++++++ Backend Challange+++++++++++++++++++++++++++++++++++//
+// Problem # 1
+// Given an amount in dollars and a tax percentage.
+// Return an array with the tax amount in cents.
+
+function taxAmountCent(dollars, taxPercent){
+    let taxReturn = [(dollars * taxPercent) / 100];
+    return taxReturn;
+}
+
+console.log(taxAmountCent(5.5, 15));
+
+
+
+// Problem# 2
+// Given the deck ['A',1,2,3,4,5,6,7,8,9,10,'J','K','Q'], write a function that shuffles the deck using the randint function.
+// The random module includes a basic function randint(a, b) that returns a uniformly random integer from a to b (including both endpoints).
+
+const deck =  ['A',1,2,3,4,5,6,7,8,9,10,'J','K','Q'];
+
+function indexRandom(deck){
+    for(let num = deck.length-1; num > 0 ; num--){
+        let randIndex = Math.floor(Math.random() * num);
+        swap(deck, num, randIndex);
+    }
+    for(let i of deck){
+        console.log(i);
+    }
+}
+function swap(deck, a, b){
+    let temp =deck[a];
+    deck[a] = deck[b];
+    deck[b] = temp;
+    
+}
+
+console.log(indexRandom(deck));
+
+
+
+//Problem 3:
+//Given a string s, return the sum of the vowels
+// in the string if each vowel's weight increases by 1 according to the vowels order.
+
+function weightOfVowels(str){
+    let map = {};
+   
+   for(let char of str){
+       if(map[char]){
+           map[char] +=1;
+       }
+       map[char] = 1
+   }
+   return result(map);
+}
+function result(map){
+    let sum = 0;
+    if(map["a"]){
+     sum+= map["a"] * 1;
+    }
+    if(map["e"]){
+        sum+=map["e"] *2;
+    }
+     if(map["i"]){
+        sum+=map["i"] *3;
+    }
+     if(map["o"]){
+        sum+=map["o"] *4;
+    }
+     if(map["u"]){
+        sum+=map["u"] *5;
+    }
+    return sum;
+}
+
+console.log(weightOfVowels("Welcome to india"));
+
+
+// Problem 4:
+// Write a recursive version of the previous function
+// (or an iterative version if you already did a recursive version).
+
+
+// Problem 5:
+// Write a regular expression to find any word between 4 and 9 letters long
+// and containing either “odoo”, “code” or “work”?
+
+const regex = /\b(?=\w{4,9}\b)(odoo|code|work)\w*/;
+
+console.log(regex.test("odoonew"));
+
+//++++++++++++++++++++ Frontend Challange ++++++++++++++++++++++++++++++++++++++++//
+body {
+  margin: 0px;
+}
+.parent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.flex-item{
+   /* 
+   All you need to do this play with this number (343) according to aviable width and item width 
+   Formula: (ParentWidth / 3) - margin (ParentWidth divide by 3 subtracte by margin[if you want e.g in my case i set 10] )
+   
+   Stackoverflow Run Code Snippet width = 633.82px (not sure)
+   Margin = 10px
+   
+   */
+   flex: 0 0 192px; /* play with this number */
+   background: white;
+   box-sizing: border-box;
+   margin: 10px;
+   text-align: center;
+   border: 1px solid;
+}
+-------------------------------------------------------------------------
+<div class="parent">
+  <div class="flex-item" id="inc">0</div>
+  <div class="flex-item" id="inc1">0</div>
+  <div class="flex-item" id="inc2">0</div>
+  <div class="flex-item" id="inc3">0</div>
+  <div class="flex-item" id="inc4">0</div>
+  <div class="flex-item" id="inc5">0</div>
+  <div class="flex-item" id="inc6">0</div>
+  <div class="flex-item" id="inc7">0</div>
+  <div class="flex-item" id="inc8">0</div>
+ 
+  
+</div>
+ <div>
+    <button onclick="buttonClick()">Click Me</button>
+  </div>
+------------------------------------------------------------------------------
+Button:
+
+function buttonClick() {
+    var value = parseInt(document.getElementById('number').innerText, 10);
+    value = isNaN(value) ? 0 : value;
+    value++;
+    document.getElementById('inc').innerText = value;
+   document.getElementById('inc1').innerText = value;
+  document.getElementById('inc2').innerText = value;
+      
+    }
+
+-----------------------------------------------------------------------------
+function buttonClick( String id) {
+    var value = parseInt(document.getElementById(id).innerText, 10);
+    value = isNaN(value) ? 0 : value;
+    value++;
+    document.getElementById(id).innerText = value;
+    console.log(id);
+    }
+
+//+++++++++++++++++++++++++ SQL +++++++++++++++++++++++++++++++++++++++//
+-----------------------------------------------------------------------------
+SQL Queries:
+SELECT city.id, city.name, COUNT(User.id) numberOfUser
+FROM User
+Join City
+On User.id=City.id
+GROUP BY city.Name
+ORDER BY numberOfUser desc;
+----------------------------
+CREATE TABLE City
+(
+    id int IDENTITY (1,1) NOT NULL PRIMARY KEY,
+    name nvarchar(60)
+);
+-------------------------------------
+INSERT INTO Customers (first_name, last_name, address, city_id)
+VALUES ('Cardinal', 'Erichsen', 'Stavanger', '1');
