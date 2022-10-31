@@ -2017,3 +2017,45 @@ var spiralOrder = function(matrix) {
     return result;
 };
  */
+
+//========================================================================//
+//-----------------------++ BACKTRACKING ++--------------------------------//
+//========================================================================//
+//****************** PROBLEM 1 :  79. Word Search ********************** */
+//Time Complexity: O(N3 ^ L)O where N is the number of cells in the board and L is the length of the word to be matched.
+//Space Complexity: O(L)where L is the length of the word to be matched.
+
+/* var exist = function(board, word) {
+    let ROWS = board.length;
+    let COLS = board[0].length;
+    
+    //This is the DFS function we are calling on the matrix
+    function isWord (r, c,  i){
+    if(i >= word.length) return true;
+    //Sanity chaeck for matrix
+    if(r < 0 || c < 0 || r>= ROWS || c >= COLS || word[i] !==board[r][c]){
+        return false;
+    }
+        
+    board[r][c] = '#';
+    //checking all bottom top right and left vlaue
+              if(isWord(r+1, c, i+1)|| 
+                 isWord(r-1, c, i+1)||
+                 isWord(r, c+1,i+1)||
+                 isWord(r, c-1, i+1)) return true;
+           board[r][c] = word[i];
+    
+}
+    
+    
+    for(let r =0 ; r<ROWS ; r++){
+        for(let c = 0; c< COLS; c++){
+            if( board[r][c] === word[0] && isWord(r, c, 0))return true;
+        }
+    } 
+    return false;
+    
+    
+};
+ */
+//****************** PROBLEM 2 :  ********************** */
