@@ -479,6 +479,7 @@ var maxProfit = function(prices) {
     };
      */
 //*************PROBLEM 3 : 3. Longest Substring Without Repeating Characters************** */
+//https://blog.devgenius.io/leetcode-3-longest-substring-without-repeating-characters-ab80b5d9902f
 //TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(n)
 /* var characterReplacement = function(s, k) {
     
@@ -519,33 +520,36 @@ var maxProfit = function(prices) {
 //************* PROBLEM 1: 20. Valid Parentheses ************** */
 //TIME COMPLEXITY O(n) || SPACE COMPLEXITY O(n)
 
-/* var isValid = function(s) {
-    let stack =[];
-    let charStack ={
-        ")" : "(",
-        "]" : "[", 
-        "}" : "{",
+/*var isValid = function(s) {
+  let stack = [];
+  // Initialize hash map with mappings. This simply makes the code easier to read.
+    let map= {
+        "}": "{",
+        ")":"(",
+        "]": "["
     };
     
     if(!s) return false;
     
-    for(let c of s){
-        // check if closing bracket
-        if(charStack[c]){
-            
-            const topEle = stack.length === 0 ? "#": stack.pop();
-            
-            if(topEle !== charStack[c]){
+    for(let char of s){
+// If the current character is a closing bracket.
+        if(map[char]){
+   // Get the top element of the stack. If the stack is empty, set a dummy value of '#'
+            const top = stack.length === 0 ? "#" : stack.pop();
+    // If the mapping for this bracket doesn't match the stack's top element, return false. 
+            if(top !== map[char]){
                 
                 return false;
+                
             }
-               // opening bracket case
-        }else{
-            stack.push(c);
+            }else{
+                // If it was an opening bracket, push to the stack.
+                stack.push(char);
         }
     }
-   return stack.length === 0;
-}; */
+      // If the stack still contains elements, then it is an invalid expression.
+    return stack.length === 0;
+};; */
 
 
 //************* PROBLEM 2: 155. Min Stack ************** */

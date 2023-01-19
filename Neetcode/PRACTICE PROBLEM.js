@@ -400,5 +400,333 @@ function helpPalindrome(s, i, j){
     }
     return true;
 } */
-//******************PROBLEM 2- ******************** */
+//******************PROBLEM 2- 1984. Minimum Difference Between Highest and Lowest of K Scores ******************** */
+//Time Complexity O(n log n) || Space Complexity O(1)
+/* var minimumDifference = function(nums, k) {
+    nums.sort((a,b)=> a - b);
+     let left = 0, right = k - 1;
+     let minDiff = Infinity;
+ 
+     while( right < nums.length){
+         
+         minDiff = Math.min(minDiff, nums[right] - nums[left]);
+         left++;
+         right++;
+     }
+     
+     return minDiff;
+ }; */
+ //******************PROBLEM 3- 344. Reverse String ******************** */
+//Time Complexity O(n) || Space Complexity O(1)
+/* var reverseString = function(s) {
+    let  left = 0, right = s.length-1;
+    
+    while(left < right){
+        let temp = s[left];
+        s[left] = s[right];
+        s[right] = temp;
+        left++;
+        right--;
+    }
+    
+    return s;
+}; */
+
+//******************PROBLEM 4 - 88. Merge Sorted Array ******************** */
+//Time Complexity O(n) || Space Complexity O(1)
+/* var merge = function(nums1, m, nums2, n) {
+    
+    for(let i = 0; i < n ; i++){
+        nums1[i + m] = nums2[i];
+    }
+    
+    return nums1.sort((a,b) => a - b);
+}; */
+
+//******************PROBLEM 5:- 283. Move Zeroes ******************** */
+//Time Complexity O(n) || Space Complexity O(1)
+/* var moveZeroes = function(nums) {
+    let left = 0;
+    for(let item in nums){
+        if(nums[item] !== 0){
+            let temp = nums[item];
+            nums[item] = nums[left];
+            nums[left] = temp;
+            left++;
+        }
+    }
+    return nums;
+}; */
+
+//******************PROBLEM 6:- 26. Remove Duplicates from Sorted Array ******************** */
+//Time Complexity O(n) || Space Complexity O(1)
+
+/* var removeDuplicates = function(nums) {
+    
+    let left = 1;
+    
+    for(let  right = 1; right < nums.length; right++ ){
+        if(nums[right] !== nums[right-1]){
+            nums[left] = nums[right];
+            left++;
+        }
+    }
+    return left;
+    
+}; */
+
+//******************PROBLEM 7:- 75. Sort Colors ******************** */
+//Time Complexity O(n) || Space Complexity O(1)
+/* var sortColors = function(nums) {
+    let j =  0;
+       let k = nums.length -1;
+       
+       for(let i =0; i<= k ; i++){
+           if(nums[i] === 0){
+               swap(nums, i, j++);
+           }else if(nums[i] === 2){
+               swap(nums, i--, k--);
+           }
+       }
+   };
+   
+   const swap = function (arr, a, b) {
+     let tmp = arr[a];
+     arr[a] = arr[b];
+     arr[b] = tmp;
+   }; */
+
+//******************PROBLEM 8:-35. Search Insert Position ******************** */
+//Time Complexity O(logn) || Space Complexity O(1)
+/* var searchInsert = function(nums, target) {
+    
+    let left = 0 , right = nums.length-1;
+    
+    while(left  <=  right){
+      let mid = Math.floor((left + right)/2);
+        
+        if(nums[mid] === target){
+            return mid;
+        }else if(nums[mid] < target) {
+            left = mid+1;
+        }else{
+            right = mid -1;
+        }
+    }
+    return left;
+}; */
+
+
+//========================================================================//
+//------------------------Linked List--------------------------------------//
+//=======================================================================//
+//******************PROBLEM 9:83. Remove Duplicates from Sorted List ******************** */
+//Time Complexity O(n) || Space Complexity O(1)
+/* 
+var deleteDuplicates = function(head) {
+    let node =  head ;
+    
+    while(node !== null && node.next !== null){
+        if(node.next.val === node.val){
+            node.next = node.next.next;
+        }else{
+            node = node.next;
+        }
+    }
+    return head;
+};
+ */
+
+//******************PROBLEM 10: 160. Intersection of Two Linked Lists******************** */
+//Time Complexity O(n + m) || Space Complexity O(1)
+/*Algorithm:
+- Set pointer pA to point at headA.
+- Set pointer pB to point at headB.
+- While pA and pB are not pointing at the same node:
+- If pA is pointing to a null, set pA to point to headB.
+  Else, set pA to point at pA.next.
+- If pB is pointing to a null, set pB to point to headA.
+  Else, set pB to point at pB.next.
+- return the value pointed to by pA (or by pB; they're the same now). 
+ */
+/* 
+var getIntersectionNode = function(headA, headB) {
+    let pA = headA;
+    let pB = headB;
+    
+    while(pA !== pB){
+        pA = pA ===  null ? headB : pA.next;
+        pB = pB === null ? headA : pB.next;
+    }
+    return pA;
+}; 
+*/
+//******************PROBLEM 11 : 231. Power of Two ******************* */
+//Time Complexity O(m) || Space Complexity O(1)
+/* 
+var isPowerOfTwo = function(n) {
+    
+    if(n <=  0){
+        return false;
+    }
+    if(n === 1){
+        return true;
+    }
+    if(n % 2 !== 0){
+        return false;
+        
+    }
+    
+    return isPowerOfTwo(n/2);
+}; */
+
+//******************PROBLEM 12 : 219. Contains Duplicate II ******************* */
+//Time Complexity O(n) || Space Complexity O(1)
+/* var containsNearbyDuplicate = function(nums, k) {
+    
+    let set = new Set();
+
+    for(let i = 0; i<= nums.length;i++){
+        if(set.has(nums[i])) return true;
+        set.add(nums[i]);
+
+        if(set.size > k){
+            set.delete(nums[i - k]);
+        }
+    }
+    return false;
+}; */
+
+//******************PROBLEM 13: 2357. Make Array Zero by Subtracting Equal Amounts ******************* */
+//Time Complexity O(n) || Space Complexity O(1)
+//https://leetcode.com/problems/make-array-zero-by-subtracting-equal-amounts/solutions/2375961/javascript-js/
+
+
+/* var minimumOperations = function(nums) {
+    return new Set(nums.filter(x => x >0)).size;
+}; */
+
+//******************PROBLEM 14:266. Palindrome Permutation ******************* */
+//Time Complexity O(n) || Space Complexity O(1)
+
+/* var canPermutePalindrome = function(s) {
+    let result = 0;
+    var map ={};
+    for(let i =0; i< s.length; i++){
+        if(map[s[i]] === undefined){
+            map[s[i]] = 1;
+            result++;
+        }
+        else if(map[s[i]] === 1){
+            map[s[i]] = 0;
+            result--;
+        }
+        else if(map[s[i]] === 0){
+            map[s[i]] = 1;
+            result++;
+        }
+    }
+    if(result <=  1) return true;
+    else return false;
+ }; */
+
+
+
+//******************** PROBLEM 15: 266. Palindrome Permutation ********************* */
+//Time Complexity O(n) || Space Complexity O(1)
+/* 
+var canPermutePalindrome = function(s) {
+    let result = 0;
+    var map ={};
+    for(let i =0; i< s.length; i++){
+        //if map has character or not if no then add value = 1 and increase result
+        if(map[s[i]] === undefined){
+            map[s[i]] = 1;
+            result++;
+        }
+        //if map has charater with value of 1 then assign it  0 and drecrease result 
+        else if(map[s[i]] === 1){
+            map[s[i]] = 0;
+            result--;
+        }
+        //if map has charater with vlaue 0 then assign it with one and increase result
+        else if(map[s[i]] === 0){
+            map[s[i]] = 1;
+            result++;
+        }
+    }
+    //last check for result value if it's less than or equal to 1 return true else false;
+    if(result <=  1) return true;
+    else return false;
+ }; */
+
+//******************** PROBLEM 16: 409. Longest Palindrome *********************** */
+//Time Complexity O(n) || Space Complexity O(1)
+
+/* var longestPalindrome = function(s) {
+    let result = 0;
+    let map = {};
+
+    for(let i =0; i< s.length ; i++){
+        if(map[s[i]] ===  undefined){
+            map[s[i]] = 1;
+        }
+        else if(map[s[i]] === 1 ){
+            map[s[i]] = undefined;
+            result += 2;
+        }
+    }
+    if(s.length > result){
+        result += 1;
+    }
+    return result;
+    
+}; */
+
+//******************** PROBLEM 17: 2351. First Letter to Appear Twice *********************** */
+//Time Complexity O(n) || Space Complexity O(1)
+
+/* var repeatedCharacter = function(s) {
+    let set  = new Set();
+
+    for(let char of s){
+        if(set.has(char)){
+         return char;
+        }
+         set.add(char);
+    }
+   
+}; */
+
+//******************** PROBLEM 18: 202. Happy Number *********************** */
+//Time Complexity O(n) || Space Complexity O(1)
+
+/* var isHappy = function(n) {
+    let visit = new Set()
+    
+    while(!visit.has(n)){
+        visit.add(n);
+        n = sumOfSquare(n);
+    }
+    if(n == 1){ 
+        return true;
+        }
+        
+    return false;
+        
+    };
+    
+    function sumOfSquare(n){
+        result = 0;
+        while(n){
+            let digit =  n%10;
+            digit =  digit ** 2;
+            result += digit;
+            n = Math.floor(n / 10);
+        }
+        return result;
+     
+    } */
+
+    //******************** PROBLEM 19: *********************** */
 //Time Complexity O(n) || Space Complexity O(1)

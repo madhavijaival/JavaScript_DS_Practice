@@ -10,7 +10,7 @@ function taxAmountCent(dollars, taxPercent){
 
 console.log(taxAmountCent(5.5, 15));
 
-
+//==========================================================================//
 
 // Problem# 2
 // Given the deck ['A',1,2,3,4,5,6,7,8,9,10,'J','K','Q'], write a function that shuffles the deck using the randint function.
@@ -36,7 +36,7 @@ function swap(deck, a, b){
 
 console.log(indexRandom(deck));
 
-
+//==========================================================================//
 
 //Problem 3:
 //Given a string s, return the sum of the vowels
@@ -75,6 +75,7 @@ function result(map){
 
 console.log(weightOfVowels("Welcome to india"));
 
+//=================================================================//
 
 // Problem 4:
 // Write a recursive version of the previous function

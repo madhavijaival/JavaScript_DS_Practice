@@ -1076,4 +1076,82 @@ let frequency =0;
 */
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-//=====================25. ======================================//
+//=====================25.FIRST NON-REAPEATING CHARACTER ======================================//
+//TIME COMPLEXITY O(N) & SPACE COMPLEXITY O(1) 
+/* 
+function firstNonRepeatingCharacter(string) {
+  // Write your code here.
+  const charFreq = {};
+  
+  for(const char of string){
+    if(!(char in charFreq)) charFreq[char] = 0;
+    charFreq[char]++;
+   // console.log(freqMap);
+  }
+  for(let idx in string){
+    const char = string[idx]
+    if(charFreq[char] === 1) return idx;
+  }
+  return -1;
+}
+
+// Do not edit the line below.
+exports.firstNonRepeatingCharacter = firstNonRepeatingCharacter; */
+
+
+//=====================26. SEMORDNILAP : REVERSE STRING ======================================//
+////TIME COMPLEXITY O(N * M) & SPACE COMPLEXITY O(N * M) 
+
+/* function semordnilap(words) {
+  // Write your code here.
+  const wordSet = new Set(words);
+  const ansArr = [];
+
+  for(const word of words){
+    let reverse = word.split('').reverse().join('');
+    if(wordSet.has(reverse) && reverse !== word ){
+      ansArr.push([word, reverse]);
+      wordSet.delete(word);
+      wordSet.delete(reverse);
+    }
+  }
+  return ansArr;
+}
+
+// Do not edit the line below.
+exports.semordnilap = semordnilap;
+ */
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//********************************** MEDIUM QUESTIONS ************************************** */
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//===============================27. THREE NUMBER SUM ======================================//
+//TIME COMPLEXITY O(N^2) & SPACE COMPLEXITY O(N) 
+
+/* function threeNumberSum(array, targetSum) {
+  // Write your code here.
+  array.sort((a,b) => a - b);
+  const resultArr = [];
+
+  for(let num = 0; num < array.length - 2; num++ ){
+    let left = num + 1;
+    let right = array.length - 1;
+    while(left < right){
+      const Total = array[left] + array[right] + array[num];
+      if( Total === targetSum){
+        resultArr.push([array[num], array[left], array[right]]);
+        left++;
+        right--;
+      }else if(Total < targetSum){
+        left++;
+      }else if(Total > targetSum){
+        right--;
+      }
+    }
+  }
+  return resultArr;
+}
+*/
+
+//===============================27. THREE NUMBER SUM ======================================//
+//TIME COMPLEXITY O(N^2) & SPACE COMPLEXITY O(N)
