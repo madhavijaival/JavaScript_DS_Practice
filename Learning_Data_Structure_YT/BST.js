@@ -94,21 +94,28 @@ class Node{
    //========= BFS Traversal ===============//
 
 levelOrder(){
-
+  //create a dequeue;
   const queue = [];
+  //add tree nodes to the queue
   queue.push(this.root);
+  //while loop until queue is not empty.
   while(queue.length){
+    //remove the first element (root of tree) and assign it to curr.
     let curr = queue.shift();
+    //print the curr value
     console.log(curr.value);
+    //if left of the tree is not empty then push left element to the queue.
     if(curr.left){
       queue.push(curr.left);
     }
+    //if right of the tree is not empty then push left element to the queue.
     if(curr.right){
       queue.push(curr.right);
        }
      }
    }   
 //=== getting min- max values from the tree ===//
+
 min(root){
   if(!root.left){
     return root.value;
@@ -124,6 +131,32 @@ max(root){
     return this.max(root.right);
     }
   }
+
+
+  deleteNode(root, value){
+    
+    if(!root) return root;
+    
+    if(value < root.value){
+       root.left = this.deleteNode(root.left, value);
+    }else if(value > root.value){
+      root.right = this.deleteNode(root.right, value);
+    }else{
+        if(!root.left && !root.right){
+          return null;
+    }
+     if(!root.left){
+         return root.right;
+     }else if(!root.right){
+       return root.left;
+     }
+      root.value = this.min(root.right);
+      root.right = this.deleteNode(root.right, root.value);
+    
+   }
+    return root;
+  
+   }
 }
 
 
@@ -143,7 +176,10 @@ console.log(bst.search(bst.root, 11));
 console.log(bst.min(bst.root));
 console.log(bst.max(bst.root));
 
-//bst.levelOrder();
+// bst.levelOrder();
+// console.log("deletion")
+// bst.delete(5);
+// bst.levelOrder();
 
 //bst.inOrder(bst.root);
 //bst.preOrder(bst.root);

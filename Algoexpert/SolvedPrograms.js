@@ -1153,5 +1153,459 @@ exports.semordnilap = semordnilap;
 }
 */
 
-//===============================28. THREE NUMBER SUM ======================================//
-//TIME COMPLEXITY O(N^2) & SPACE COMPLEXITY O(N)
+//===============================28. SMALLEST DIFFERENCE ======================================//
+//TIME COMPLEXITY O(nlog (n) + m log(m)) & SPACE COMPLEXITY O(1)
+/* 
+function smallestDifference(arrayOne, arrayTwo) {
+  // Write your code here.
+  arrayOne.sort((a,b) => a - b);
+  arrayTwo.sort((a,b) => a - b);
+  let first = 0;
+  let second = 0;
+  let smallest = Infinity;
+  let current = Infinity;
+  let smallDiff= [];
+
+  while(first < arrayOne.length && second < arrayTwo.length){
+    firstNum =arrayOne[first];
+    secondNum = arrayTwo[second];
+
+    if( firstNum  < secondNum){
+      current = secondNum - firstNum;
+      first++;
+    }else if( secondNum < firstNum){
+      current = firstNum - secondNum;
+      second++;
+    }else {
+      return[firstNum, secondNum];
+    }
+    if(smallest > current){
+      smallest = current; 
+      smallDiff =  [firstNum, secondNum];
+    }
+  }
+  return smallDiff;
+}
+
+// Do not edit the line below.
+exports.smallestDifference = smallestDifference;
+ */
+
+//=============================== 29. MOVE ELEMENT TO THE END ======================================//
+//TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(1)
+
+/* unction moveElementToEnd(array, toMove) {
+  // Write your code here.
+  // Write your code here.
+  let left = 0; 
+  let right = array.length - 1;
+
+  while(left < right){
+    
+    while ( left < right && array[right] === toMove ) right--; 
+    if(array[left] === toMove) swap(left, right, array);
+      left++; 
+}
+return array;
+}
+
+function swap(i, j, arr){
+  let temp = arr[i];
+  arr[i] = arr[j];
+  arr[j] = temp;
+}
+
+
+// Do not edit the line below.
+exports.moveElementToEnd = moveElementToEnd; */
+
+
+
+//=============================== 30. MONOTONIC ARRAY ======================================//
+//TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(1)
+
+/* function isMonotonic(array) {
+  // Write your code here.
+   isDecreasing = true;
+  isIncreasing = true;
+
+  for(let num = 1; num < array.length; num++){
+    if(array[num] < array[num - 1]) isIncreasing = false;
+    if(array[num] > array[num - 1]) isDecreasing = false;
+  }
+  return (isDecreasing || isIncreasing);
+}
+
+// Do not edit the line below.
+exports.isMonotonic = isMonotonic; */
+
+
+//=============================== 31. SPIRAL TRAVERSE ======================================//
+//TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(n)
+/* 
+function spiralTraverse(array) {
+  // Write your code here.
+  const result = [];
+  let startRow = 0, endRow = array.length - 1;
+  let startCol = 0; endCol = array[0].length - 1;
+
+  while(startRow <= endRow && startCol <= endCol){
+    for(let col = startCol ; col <= endCol ; col++){
+      result.push(array[startRow][col]);
+    }
+     for(let row = startRow + 1 ; row <= endRow; row++ ){
+       result.push(array[row][endCol]);
+     }
+      for(let col = endCol - 1; col >= startCol; col--){
+        if(startRow === endRow) break;
+        result.push(array[endRow][col])
+      }
+      for(let row = endRow -1 ; row > startRow; row--){
+        if(startCol === endCol) break;
+        result.push(array[row][startCol]);
+      }
+    
+    startRow++;
+    endRow--;
+    startCol++;
+    endCol--;   
+  }
+  return result;
+}
+
+// Do not edit the line below.
+exports.spiralTraverse = spiralTraverse;
+ */
+
+//=============================== 32.ARRAY PRODUCT - EXCEPT ITSELF  ======================================//
+//TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(n)
+
+/* function arrayOfProducts(array) {
+  // Write your code here.
+  let result = new Array(array.length).fill(1);
+
+  let product = 1;
+  for(let i in array){
+    result[i] = product;
+    product *= array[i];
+  }
+
+  product = 1;
+  for(let i = array.length -1; i > -1; i--){
+    result[i] *= product;
+    product *= array[i];
+  }
+
+  return result;
+}
+
+// Do not edit the line below.
+exports.arrayOfProducts = arrayOfProducts;
+ */
+
+//=============================== 33. FIRST DUPLICATE VALUE ======================================//
+//TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(n)
+
+/* function firstDuplicateValue(array) {
+  // Write your code here.
+
+  const set = new Set();
+  for(let num of array){
+    if(set.has(num)) return num;
+    set.add(num);
+  }
+  return -1;
+}
+
+// Do not edit the line below. 
+exports.firstDuplicateValue = firstDuplicateValue;
+*/
+
+//=============================== 34. MERGE OVERLAPPING INTERVAL ======================================//
+//TIME COMPLEXITY O(nlog(n)) & SPACE COMPLEXITY O(n)
+/* 
+function mergeOverlappingIntervals(array) {
+  // Write your code here.
+  array.sort((a,b) => a[0] - b[0]);
+
+  let current = 0;
+  let next = 1;
+  while(next < array.length){
+    //check condition whether the last element of the first interval overlaps with the 
+    // first element of the next interval
+    if(array[current][1] >= array[next][0]){
+      //last maximum element to set at the value of overlapped interval
+      array[current][1] = Math.max(array[current][1] , array[next][1]);
+      //to merge elements that overlap
+      
+      array.splice(next, 1);
+  
+  
+       } else{
+      //else increase the counter for the next elements
+               current++;
+               next++;
+       }
+      
+    }
+
+    return array;
+  }
+// Do not edit the line below.
+exports.mergeOverlappingIntervals = mergeOverlappingIntervals;
+ */
+
+//=============================== 35. ZERO SUM SUBARRAY ======================================//
+//TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(n)
+/* 
+function zeroSumSubarray(nums) {
+  // Write your code here.
+  //create set to add unique values.
+  let set = new Set();
+  //take count to calculate the sum of numbers.
+  let count  = 0;
+
+  for(let num of nums){
+    //add  0 to set 
+    set.add(count);
+    //add num to count
+    count += num;
+    //if the count is already in the set means 0 = 0 then return true we got sum = 0;
+    if(set.has(count)) return true;
+
+    //else add the count
+    set.add(count);
+  }
+  //if there is not elements which can sums = 0 returns false. 
+  return false;
+}
+
+// Do not edit the line below.
+exports.zeroSumSubarray = zeroSumSubarray;
+ */
+
+//=============================== 36. BST CONSTRUCTION ======================================//
+  // Average: O(log(n)) time | O(log(n)) space
+  // Worst: O(n) time | O(n) space
+
+// Do not edit the class below except for
+// the insert, contains, and remove methods.
+// Feel free to add new properties and methods
+// to the class.
+/* class BST {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+
+  insert(value) {
+    if(value < this.value){
+      if(this.left === null){
+        this.left = new BST(value);
+      }else{
+        this.left.insert(value);
+      }
+    }else{
+      if(this.right === null){
+        this.right = new BST(value)
+      }else{
+        this.right.insert(value);
+      }
+      // Write your code here.
+    // Do not edit the return statement of this method.
+    return this;
+      }
+  }
+
+  contains(value) {
+    // Write your code here.
+    if(value < this.value){
+      if(this.left === null){
+        return false;
+      }else{
+        return this.left.contains(value);
+      }
+    }else if(value > this.value){
+      if(this.right === null){
+        return false;
+      }else{
+        return this.right.contains(value);
+      }
+    }else{
+      return true;
+    }
+  }
+
+
+  remove(value, parent = null) {
+    if(value < this.value){
+      if(this.left !== null){
+        this.left.remove(value, this);
+      }
+    }else if(value > this.value){
+      if(this.right !== null){
+        this.right.remove(value, this);
+      }
+    }else{
+      if(this.left !== null && this.right !== null){
+        this.value = this.right.getMinValue();
+        this.right.remove(this.value, this);
+      }else if(parent === null){
+        if(this.left !== null){
+          this.value = this.left.value;
+          this.right= this.left.right;
+          this.left = this.left.left;
+        }else if(this.right !== null){
+          this.value = this.right.value;
+          this.left= this.right.left;
+          this.right = this.right.right;
+         }else{
+          
+         }
+        }else if(parent.left === this){
+        parent.left =this.left !== null? this.left : this.right;
+        }else if(parent.right === this){
+      parent.right =this.right !== null? this.right : this.left;
+      }
+    }
+   
+    // Write your code here.
+    // Do not edit the return statement of this method.
+    return this;
+  }
+    
+ getMinValue(){
+      if(this.left === null){
+        return this.value;
+      }else{
+        return this.left.getMinValue();
+      }
+    }
+}
+
+// Do not edit the line below.
+exports.BST = BST;
+ */
+
+//=============================== 37. BST VALIDATION ======================================//
+//TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(d)
+
+/* // This is an input class. Do not edit.
+class BST {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+function validateBst(tree) {
+  // Write your code here.
+  return DFS(tree, -Infinity , Infinity)
+}
+
+function DFS(node, minVal, maxVal){
+  if(node === null) return true;
+  if(node.value < minVal || node.value >= maxVal){
+    return false;
+  }
+  return DFS(node.left, minVal, node.value) && DFS(node.right, node.value, maxVal);
+}
+
+// Do not edit the line below.
+exports.BST = BST;
+exports.validateBst = validateBst;
+ */
+
+
+//=============================== 38. BST TRAVERSAL ======================================//
+//TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(n)
+
+/* 
+function inOrderTraverse(tree, array) {
+  // Write your code here.
+  if(tree){
+    inOrderTraverse(tree.left, array);
+    array.push(tree.value);
+    inOrderTraverse(tree.right, array)
+  }
+  return array;
+}
+
+function preOrderTraverse(tree, array) {
+  // Write your code here.
+  if(tree){
+    array.push(tree.value);
+    preOrderTraverse(tree.left, array);
+    preOrderTraverse(tree.right, array);
+  }
+  return array;
+  
+}
+
+function postOrderTraverse(tree, array) {
+  // Write your code here.
+  if(tree){
+    postOrderTraverse(tree.left, array);
+    postOrderTraverse(tree.right, array);
+    array.push(tree.value);
+  }
+  return array;
+}
+
+// Do not edit the lines below.
+exports.inOrderTraverse = inOrderTraverse;
+exports.preOrderTraverse = preOrderTraverse;
+exports.postOrderTraverse = postOrderTraverse;
+ */
+
+//=============================== 39. MIN HEIGHT BST ======================================//
+//TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(n)
+/* 
+function minHeightBst(array) {
+  // Write your code here.
+  return minHeightBST(array, 0, array.length - 1);
+}
+
+function minHeightBST(arr, startIdx,  endIdx){
+  if(endIdx < startIdx) return null;
+
+  const midIdx = Math.floor((endIdx + startIdx) / 2);
+  let bst = new BST(arr[midIdx]);
+
+  bst.left = minHeightBST(arr, startIdx, midIdx - 1);
+  bst.right = minHeightBST(arr, midIdx + 1, endIdx);
+  return bst;
+  
+}
+class BST {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+
+  insert(value) {
+    if (value < this.value) {
+      if (this.left === null) {
+        this.left = new BST(value);
+      } else {
+        this.left.insert(value);
+      }
+    } else {
+      if (this.right === null) {
+        this.right = new BST(value);
+      } else {
+        this.right.insert(value);
+      }
+    }
+  }
+}
+
+// Do not edit the line below.
+exports.minHeightBst = minHeightBst;
+ */
+
+//=============================== 40.  ======================================//
+//TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(n)
