@@ -1607,5 +1607,101 @@ class BST {
 exports.minHeightBst = minHeightBst;
  */
 
-//=============================== 40.  ======================================//
-//TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(n)
+//=============================== 40. FIND KTH LARGEST ELEMENT IN BST ======================================//
+//TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(h) where h is the height of the BST
+/* 
+class BST {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+function findKthLargestValueInBst(tree, k, count = [0]) {
+  // Write your code here.
+  // Check if the current node is null, in which case return null
+  
+  if(!tree) return null;
+
+  // Check the right subtree of the current node to see if the kth largest value is present there
+  const right = findKthLargestValueInBst(tree.right, k, count);
+  // If the right subtree returns a non-null value, return it.
+
+  if(right) return right;
+
+  // Increment the count as the current node is being processed
+
+  count[0] += 1;
+
+       // If the count is equal to k, return the value of the current node
+
+      if (count[0] === k) return tree.value;
+
+      // If the kth largest value is not found in the right subtree, check the left subtree
+    return  findKthLargestValueInBst(tree.left, k,  count);
+  
+}
+
+// Do not edit the lines below.
+exports.BST = BST;
+exports.findKthLargestValueInBst = findKthLargestValueInBst;
+ */
+
+
+//=============================== 41. MAX SUBSET SUM NO ADJACENT  ======================================//
+//TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(1)
+
+/* function maxSubsetSumNoAdjacent(array) {
+  // Write your code here.
+  // Check if the array is empty or has only one element
+if(!array.length)  return 0;
+  if(array.length === 1 ) return array[0];
+
+  let second = array[0];
+  let first = Math.max(array[0], array[1]);
+   // Iterate over the array, starting from the third element
+  for(let idx = 2; idx < array.length; idx++){
+    let curr = Math.max(first, second + array[idx]);
+    second = first;  // second is updated to be the previous first
+    first = curr; // first is updated to be the current maximum sum ending with the current element
+  }
+  return first;
+}
+
+// Do not edit the line below.
+exports.maxSubsetSumNoAdjacent = maxSubsetSumNoAdjacent; 
+*/
+
+
+//=============================== 42. NUMBER OF WAYS TO MAKE CHANGE ======================================//
+//TIME COMPLEXITY O(n d) & SPACE COMPLEXITY O(n)
+/* 
+function numberOfWaysToMakeChange(n, denoms) {
+  // Write your code here.
+  // Create an array of `ways` to store the number of ways to 
+  //make change for each value from 0 to n
+  const  ways  = new Array(n+1).fill(0);
+  
+  // Initialize the first element of the array to 1
+  ways[0] = 1;
+   // Iterate over the denominations
+  for(let denom of denoms){
+     // Iterate over the values from 1 to n
+    for(let amt = 1;  amt < n + 1 ; amt++){
+      // If the current denomination is less than or equal to the current value, add the number of 
+      //ways to make change for the remaining value to the current position.
+      if(denom <= amt){
+        ways[amt] += ways[amt - denom];
+      }
+    }
+  }
+  return ways[n];
+}
+
+// Do not edit the line below.
+exports.numberOfWaysToMakeChange = numberOfWaysToMakeChange;
+ */
+
+//=============================== 43.  ======================================//
+//TIME COMPLEXITY O(n d) & SPACE COMPLEXITY O(n)
