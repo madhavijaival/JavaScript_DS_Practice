@@ -124,7 +124,7 @@ exports.sortedSquaredArray = sortedSquaredArray;
 //**************SOLUTION 2**************** */
 //||TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(n)
 /* ALGORITHM :
-- TAKE SMALLER VALUE =0; AND LARGER =LEN -1 AND CREATED ONE SORTED[] TO STORE SQUARE.
+- TAKE SMALLER VALUE = 0; AND LARGER = LEN -1 AND CREATED ONE SORTED[] TO STORE SQUARE.
 - REVERSE THE FOR LOOP FOR Array.
 - THEN STORE LEFTVAL AS ARRAY INDEX 1 AND RIGHTVAL ARRAY INDEX LAST VALUE.
 - THEN CHECK THE CONDITION TAKING ABSOLUTE VALUE IF LEFTVAL IS GREATER THAN RIGHTVAL.
@@ -235,8 +235,8 @@ exports.nonConstructibleChange = nonConstructibleChange;
 /*
 Algorithm:  
 - FIRST INITIALIZE CLOSEST VALUE AND ADD THE CURRENT NODE VALUE OF THE TREE TO IT.
-- THEN WE HAVE TO CALCULATE THE ABSOLUTE DIFFRENCE BETWEEN THE CURRENT NODE VALUE WITH THE TARGET VALUE |TARGET - CLOSESTNODE.VLAUE|.
-- AND COMPARE THE DIFFRENCE IF IT SMALLER THAN THE ABSOLUTE DIFFERENCE OF THE |CLOSEST - TARGET| IF THE IT'S TRUE THEN UPDATE CLOSEST WITH THE CURRENT NODE.
+- THEN WE HAVE TO CALCULATE THE ABSOLUTE DIFFRENCE BETWEEN THE CURRENT NODE VALUE WITH THE TARGET VALUE |TARGET - CLOSESTNODE.VALUE|.
+- AND COMPARE THE DIFFRENCE IF IT SMALLER THAN THE ABSOLUTE DIFFERENCE OF THE |CLOSEST - TARGET| IF IT'S TRUE THEN UPDATE CLOSEST WITH THE CURRENT NODE.
 - COMPARE THIS CLOSEST WITH THE TARGET VALUE IF CURRENTNODE IS SMALL THAN THE TARGET THEN MOVE TO THE RIGHT NODES.
 - IF THE CURRENTNODE IS GREATER THE TARGET VALUE THE MOVE TO THE LEFT NODES.
 - NOW REPEATE THE PROCESS 1- 4 UNTILL WE GET THE CLOSEST NODE AND THEN RETURN CLOSEST. 
@@ -489,7 +489,7 @@ exports.minimumWaitingTime = minimumWaitingTime; */
 /*
 ALGORITHM: 
 - FIRST WE NEED TO SORT ARRAY IN DECENDING ORDER.
-- THEN CREATE THE VARIABLE TO STORE THE TOPHEIGHT THEN COMPARE THE 1ST ELEMEN TFROM THE BOTH ARRAY AND RETURN THE TOP ELEMENT WITH OUTPUT OF IT'S COLOR.
+- THEN CREATE THE VARIABLE TO STORE THE TOPHEIGHT THEN COMPARE THE 1ST ELEMENT FROM THE BOTH ARRAY AND RETURN THE TOP ELEMENT WITH OUTPUT OF IT'S COLOR.
 - THEN LOOP THROUGH THE INDEXES AS BOTH ARRAY HAS SAME VALUES WE NEED TO LOOP ON ONLY ONE ARRAY.
 - CHECK THE CONDITION IF THE TOPHEIGHT IS EQUAL TO THE ="COLOR ANY BLUE/RED " THE CHECK CONDITION IFR FIRST ARRAY IS >= TO SECOND THEN RETURN FALSE;
 - AND CHECK OF THE SECOND ARRAY >= FIRST ARRAY ALSO RETURN FLASE
@@ -523,9 +523,9 @@ ALGORITHM:
 - FIRST WE NEED TO SORT BLUESHIRT ARRAY IN THE REVERSE ORDER.
 - THEN WE CHECK IF THE FASTEST IS FALSE THEN WE SORT REDSHIRT ARRAY IN DECENDING ORDER TO GET THE LOWEST TOTAL
 - ELSE WE SORT THE REDSHIRT ARRAY IN THE ASSENDING ORDER.
-- THNE CRATE VERIABLE TO STORE THE TOTALSPEED AND RUN THE FOR LOOP FOR ITERATING THE VALUES
--THEN WE ADD THE VALUE WHICH ONE IS THE MAX FRIOM THE REDSHIRT OR BLUESHIRT.
-- IN LAST RESTUR TOTTALSPEED
+- THEN CRATE VERIABLE TO STORE THE TOTALSPEED AND RUN THE FOR LOOP FOR ITERATING THE VALUES
+-THEN WE ADD THE VALUE WHICH ONE IS THE MAX FROM THE REDSHIRT OR BLUESHIRT.
+- IN LAST RESTURN TOTTAL SPEED
  */
 /* function tandemBicycle(redShirtSpeeds, blueShirtSpeeds, fastest) {
   // Write your code here.
@@ -538,7 +538,7 @@ ALGORITHM:
   }
 let totalSpeed=0;
   for(let i=0; i<blueShirtSpeeds.length; i++){
-    totalSpeed +=Math.max(redShirtSpeeds[i],  blueShirtSpeeds[i]);
+    totalSpeed += Math.max(redShirtSpeeds[i],  blueShirtSpeeds[i]);
   }
   return totalSpeed;
 }
@@ -656,7 +656,7 @@ exports.productSum = productSum;
 /*
 ALGORITHM: 
 - FOR THE BINARY SEARCH ARRAY ALWAYS SHOULD BE SORTED.
-- THE WE ASSIGN THE FIRST VALUE LEFT AND LAST IS RIGHT.
+- WE ASSIGN THE FIRST VALUE LEFT AND LAST IS RIGHT.
 - THEN TAKE MIDDLE VALUE BYE THE FORMULA USING (LEFT + RIGHT / 2) 
 - THEN CHECK IS THE MIDDLE VALUE IS SAME AS THE TARGET VALUE IF IT'S SAME THE JUST O/P THE INDEX OF MIDDLE
 - ELSE IF THE MIDDLE VALUE IS GREATER THAN THE TARGET WE NEED TO ERASE ALL RIGHT ELEMENT AND THE  ADD RIGHT = MIDDLE - 1
@@ -710,13 +710,14 @@ exports.binarySearch = binarySearch;
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
-//=====================17. FINDTHREE LARGEST NUMBERS ===================================//
+//=====================17. FIND THREE LARGEST NUMBERS ===================================//
 ////TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(1)
 /*
 ALGORITHM:
 - FIRST WE NEED TO CREATE AN ARRAY TO STORE THE LARGEST NUMBER AND ASSIGN INTIAL NULL TO ALL THREE.
-- IN THE HELPER FUNCTION WE HAVE TO PARAMETER ONE IS THE THREELASRGEST ARRAY AND PASSED ELEMENT OF ARRAY.
-- THEN CHECK IF THE LARGEST INDEX VALUE IS NULL OR GREATER THAN THE CURRENT ARRAY ELEMNTS IF ONE OF THE CONDITION IS TRUE THEN CALL ANOTHER HELPER FUNCTION TO SHIF ARRAY ELEMENT OF THE LARGESTTHREE.
+- IN THE HELPER FUNCTION WE HAVE TWO PARAMETER ONE IS THE THREELASRGEST ARRAY AND PASSED ELEMENT OF ARRAY.
+- THEN CHECK IF THE LARGEST INDEX VALUE IS NULL OR GREATER THAN THE CURRENT ARRAY ELEMNTS IF ONE OF THE CONDITION IS TRUE THEN 
+ CALL ANOTHER HELPER FUNCTION TO SHIFT ARRAY ELEMENT OF THE LARGESTTHREE.
 - REPEAT PREVIOUS SAME PROCEDURE FOR THE INDEX 1 AND INDEX 0 ALSO.
 - THEN IN THE 2ND HELPER FUCNTION WE SHIFT THE ELEMENT CHECKING THE VALUE OF THE ARRAY OF THREELARGEST NUMS.   
  */
@@ -743,7 +744,7 @@ function shiftLargest(array, num, idx){
   for(let i =0; i<= idx; i++){
     if(i === idx) return array[i] = num;
     else
-      array[i]= array[i+1];
+      array[i] = array[i+1];
   }
 }
 // Do not edit the line below.
@@ -769,42 +770,56 @@ exports.findThreeLargestNumbers = findThreeLargestNumbers;
 //Average: TIME COMPLEXITY O(n^2) & SPACE COMPLEXITY O(1)
 //Worst: TIME COMPLEXITY O(n^2) & SPACE COMPLEXITY O(1)
 /* 
+ALGORITHM : 
+- FIRST TAKE IS isSorted =  TRUE.
+- THEN IN WHILE NOT isSorted, THEN ASSIGN isSorted WITH true. 
+- RUN THE FOR LOOP ON THE ARRAY ANY CHECK IF THE CURRENT ELEMENT IS GREATER THAN NEXT.
+- IF IT'S TRUE THEN CALL SWAP FUNCTION WITH CURRENT, NEXT AND ARRAY.
+   - IN SWAP CREATE TEMP VARIABLE AND SWAP CURRENT AND NEXT ELEMENT IN THE ARRAY.
+- ALSO ASSIGN isSorted WITH false.
+- RETURN array.
+ */
+/* 
 function bubbleSort(array) {
   // Write your code here.
-let isSorted = false;
-  let counter =0;
-  while (!isSorted){
-    isSorted =true;
-    for(let i = 0; i< array.length - 1 - counter; i++ ){
+  let isSorted = false; 
+  while(!isSorted){
+    isSorted = true;
+    for(let i = 0; i< array.length - 1 ; i++ ){
       if(array[i] > array[i+1]){
-        swapArr(i, i + 1, array);
+        swap(i, i+1, array);
         isSorted = false;
       }
-    }
-     counter++;
+    }  
   }
   return array;
 }
 
-function swapArr(i, j, array){
-  let temp = array[i];
-  array[i] =array[j];
-  array[j] = temp;
-  
+function swap(i, j, array){
+  const temp = array[j];
+  array[j] = array[i];
+  array[i] = temp;
 }
-
 // Do not edit the line below.
 exports.bubbleSort = bubbleSort;
  */
+
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-//====================19. INSERTION SORT ====================================//
+//==================== 19. INSERTION SORT ====================================//
 //TIME COMPLEXITY O(n^2) & SPACE COMPLEXITY O(1)
+/*ALGORITHM:
+- Iterate from arr[1] to arr[N] over the array. 
+- Compare the current element (key) to its predecessor. 
+- If the key element is smaller than its predecessor, compare it to the elements before. 
+  Move the greater elements one position up to make space for the swapped element.
+- return  array
+ */
 
 /* function insertionSort(array) {
   // Write your code here.
   for (let num =0; num < array.length; num++)
     {
-      let j =num;
+      let j = num;
       while( j > 0 && array[j] < array[j-1] ){
         swap(j, j-1, array);
         j -=1;
@@ -815,19 +830,27 @@ exports.bubbleSort = bubbleSort;
 function swap(i, j, array){
   let temp = array[i];
   array[i] = array[j];
-  array[j] =temp;
+  array[j] = temp;
 }
 
 // Do not edit the line below.
 exports.insertionSort = insertionSort;
  */
+
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 //=====================20.SELECTION SORT ================================//
 //TIME COMPLEXITY O(n^2) & SPACE COMPLEXITY O(1)
+/* ALGORITHM:
+- Initialize minimum value currentIdx to location 0.
+- Traverse the array to find the minimum element in the array.
+- Create variable smallIdx and assign currentIdx to it.
+-While traversing if any element smaller than smallIdx is found then swap both the values.
+Then, increment currentIdx to point to the next element.
+- Repeat until the array is sorted. */
 
 /* function selectionSort(array) {
   // Write your code here.
-  let currentIdx =0;
+  let currentIdx = 0;
   while(currentIdx < array.length-1){
     let smallIdx = currentIdx;
     for(let i = currentIdx + 1; i < array.length; i++){
@@ -854,6 +877,9 @@ exports.selectionSort = selectionSort; */
 /* 
 ALGORITHM:
 - CHECKING FIRST AND LAST CHARACTER IS EQUAL OR NOT.
+ -  IF NOT EQUAL THEN RETURN false.
+ - AND FIRST INCREMENT AND LAST DECREMENT.
+- LAST IF ALL ARE EQUAL THEN RETURN TRUE.
  */
 
  //************SOLUTION 1********************** */
@@ -920,11 +946,11 @@ ALGORITHM:
 - FIRST WE NEED TO CREATE THE ARRAY FOR STORING ENCODED CHARACTER.
 - THEN ASSIGN CURRENTLENGHT = 1
 - LOOP THROUGH THE STRING ELEMENTS AND ADD THE IF LOOP TO CHECK CONDITION
-    - IF THE CURRENT CHAR IS = PREVIOUS CHAR OR THE CURRENTLENGHT === 9
+    - IF THE CURRENT CHAR IS NOT EQUAL TO PREVIOUS CHAR OR THE CURRENTLENGHT === 9
 - THEN ADD THE LENGTH TO THE ENCODED ARRAY (toString() for conversion)
 - AND ADD PREVIOUS CHARACTER AND RESET THE CURRENTLENGTH
 - TO HANDLE LAST RUN WE HAVE TO ADD LENGTH AND LASTELEMENT TO THE ENCODED ARRAY
-- RETURN THE RESULT WIT THE ENCODED STRING ARRAY USING (join(""))
+- RETURN THE RESULT WITH THE ENCODED STRING ARRAY USING (join(""))
  */
 
 /* 
@@ -954,7 +980,7 @@ exports.runLengthEncoding = runLengthEncoding;
  */
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-//====================23. caesarCipherEncryptor =================//
+//====================23. CaesarCipherEncryptor =================//
 //TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(n)
 
 //**************SOLUTION 1********************* */
@@ -1002,6 +1028,13 @@ exports.caesarCipherEncryptor = caesarCipherEncryptor;
 
 //TIME COMPLEXITY O( n + m ) & SPACE COMPLEXITY O(C), WHERE n IS NUMBAER OF CHARACTERS, 
 //m IS THE LENGTH OF THE DOCUMENT, AND C IS THE NUMBER OF UNIQUE CHARACTERS IN STRING
+/* ALGORITHM :
+- CREATE HASH TABLE AND START COUNTING ALL OF THE CHAR FROM CHARATERS STRNG AND STORE THOSE COUNTS IN HASH-TABLE.\
+- THEN LOOP THROUGH DOCUMENT STRING AND CHECK IF THE CHAR IS IN THE HASH TABLE AND HAS VALUE GREATER THAN 0, 
+ THEN DECREMENT THE VALUE OF THE CHAR IN HASH TABLE.
+- IF WE MAKE IT THROUGHT ENTIRE DOCUMENT STRING WITHOUT RETURNING false, THEN WE CAN GENERATE DOCUMENT.
+- IT RETURN TRUE.  
+ */
 
 //************* SOLUTION 1 - OPTIMAL(HASHMAP)****************** */
 /* 
@@ -1076,8 +1109,15 @@ let frequency =0;
 */
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-//=====================25.FIRST NON-REAPEATING CHARACTER ======================================//
+//===================== 25.FIRST NON-REAPEATING CHARACTER ======================================//
 //TIME COMPLEXITY O(N) & SPACE COMPLEXITY O(1) 
+/* ALGORITHM :
+- CREATE HASH TABLE AND START COUNTING ALL OF THE CHAR FROM string AND STORE THOSE COUNTS IN HASH-TABLE.
+- THEN LOOP THROUGH string AND ASSIGN string[Idx] TO THE CHAR VARIABLE.
+- IF THE CHAR IS IN THE HASH TABLE AND HAS VALUE EQUAL TO 1, 
+ - THEN RETURN THAT INDEX.
+- IF THERE IS NO REPEATING VARIABLE THEN RETURN -1.  
+ */
 /* 
 function firstNonRepeatingCharacter(string) {
   // Write your code here.
@@ -1099,8 +1139,16 @@ function firstNonRepeatingCharacter(string) {
 exports.firstNonRepeatingCharacter = firstNonRepeatingCharacter; */
 
 
-//=====================26. SEMORDNILAP : REVERSE STRING ======================================//
-////TIME COMPLEXITY O(N * M) & SPACE COMPLEXITY O(N * M) 
+//===================== 26. SEMORDNILAP : REVERSE STRING ======================================//
+//TIME COMPLEXITY O(N * M) & SPACE COMPLEXITY O(N * M) 
+/*ALGORITHM:
+- CREATE SET WITH THE SAME WORDS ARRAY.
+- THEN IERATE THROUGH THE WORDS STRING AND TAKE REVERSE OF THE WORD.
+- AND CHECK ID IT'S IN THE SET OR NOT AND THE REVERSE IS NOT EQUAL TO THE WORD
+  - THEN PUSH WORD AND REVERSE IN THE ANSWER ARRAY.
+  - THEN DELETE THE WORD AND IT'S REVERSE FROM SET.
+- RETURN ANSWER ARRAY.  
+ */
 
 /* function semordnilap(words) {
   // Write your code here.
@@ -1121,12 +1169,20 @@ exports.firstNonRepeatingCharacter = firstNonRepeatingCharacter; */
 // Do not edit the line below.
 exports.semordnilap = semordnilap;
  */
-
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //********************************** MEDIUM QUESTIONS ************************************** */
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //===============================27. THREE NUMBER SUM ======================================//
 //TIME COMPLEXITY O(N^2) & SPACE COMPLEXITY O(N) 
+/* ALGORITHM:
+- CREATE NEW RESULT ARRAY AND THEN SORT MAIN ARRAY.
+- ITERATE THE ARRAY FROM 0 TO LENGTH-2, AND ASSIGN LEFT = IDX + 1, RIGHT  = LENGTH - 1.
+- WHILE LEFT < RIGHT, COUNT THE TOTAL WITH ARRAY CURRENT VAL + LEFT + RIGHT.
+- IF THE TOTAL IS EQUAL TO TARGET VALUE THEN PUSH THE ALL THREE ELEMENT TO THE RESULT ARRAY.
+- ELSE IF TOTAL IS LESS THAN THE TARGET THEN, INCREASE LEFT POINTER.
+- ELSE IF TOTAL IS GREATER THAN THE TARGET THEN, DECREASE RIGHT POINTER.
+- LAST RETURN RESULT ARRAY.
+ */
 
 /* function threeNumberSum(array, targetSum) {
   // Write your code here.
@@ -1155,6 +1211,16 @@ exports.semordnilap = semordnilap;
 
 //===============================28. SMALLEST DIFFERENCE ======================================//
 //TIME COMPLEXITY O(nlog (n) + m log(m)) & SPACE COMPLEXITY O(1)
+/*ALGORITHM : 
+- SORT ARRAY ONE AND ARRAY TWO, CREATE 2 VARIABLE FIRST AND SECOND WITH INITIAL VALUE OF TWO ARRAYS.
+- CREATE VARIABLE SMALLEST STORE INFINITY VAL, AND  CREATE NEW ARRAY TO STORE OUR RESULT.
+- WHILE LOOK UNTILL THE FIRST AND SECOND LESS THAN LENGTH OF RESPECTIVE ARRAYS.
+- CREATE TEMPSUM VARUIABLE TO STORE ABSOLUTE DIFFERENCE OF FIRST - SECOND VALUE OF ARRAY.
+- IF TEMPSUM IS LESS THAN SMALLEST VALUE.
+  - THEN ASSIGN TEMPSUM TO SMALLEST, AND ADD ARRAYONE FIRST AND ARRAYTWO SECOND VALUE TO THE RESULT ARRAY.
+- IF FIRST > SECOND THEN INCREMENT THE SECOND ELSE INCREMENT THE FIRST VALUE.
+- IN LAST RETURN THE RESULT ARRAY WITH TWO SMALLEST DIFFERENCE VALUE.
+ */
 /* 
 function smallestDifference(arrayOne, arrayTwo) {
   // Write your code here.
@@ -1163,26 +1229,18 @@ function smallestDifference(arrayOne, arrayTwo) {
   let first = 0;
   let second = 0;
   let smallest = Infinity;
-  let current = Infinity;
   let smallDiff= [];
 
   while(first < arrayOne.length && second < arrayTwo.length){
-    firstNum =arrayOne[first];
-    secondNum = arrayTwo[second];
+    
+    var tempSum = Math.abs(arrayOne[first] - arrayTwo[second]); 
 
-    if( firstNum  < secondNum){
-      current = secondNum - firstNum;
-      first++;
-    }else if( secondNum < firstNum){
-      current = firstNum - secondNum;
-      second++;
-    }else {
-      return[firstNum, secondNum];
-    }
-    if(smallest > current){
-      smallest = current; 
-      smallDiff =  [firstNum, secondNum];
-    }
+    if( tempSum  < smallest){
+      smallest = tempSum;
+      smallDiff = [arrayOne[first], arrayTwo[second]];
+  }
+    (arrayOne[first] > arrayTwo[second]) ? second++ : first++;
+    
   }
   return smallDiff;
 }
@@ -1193,6 +1251,14 @@ exports.smallestDifference = smallestDifference;
 
 //=============================== 29. MOVE ELEMENT TO THE END ======================================//
 //TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(1)
+/*ALGORITHM:
+- TAKE TWO POINTER LEFT WITH 0 AND RIGHT WITH LENGTH-1
+- WHILE THE LEFT IS LESS THAN RIGHT
+ - WHILE THE LEFT IS LESS THAN RIGHT AND RIGHT VALUE IS EQUAL TO THE toMove NUM THEN RIGHT--;
+ - IF LEFT VALUE  IS EQUAL TO THE toMove VAL THEN CALL SWAP FUNCTION EITH THE LEFT, RIGHT AND ARRAY, AND INCREMENT LEFT POINTER.
+ - (SWAP FUNCTION CREATE TEMP VARIABLE AND SWAPS THE LEFT AND RIGHT ELEMENT OF ARRAY)
+- LAST RETURN ARRAY  
+ */
 
 /* unction moveElementToEnd(array, toMove) {
   // Write your code here.
@@ -1223,11 +1289,18 @@ exports.moveElementToEnd = moveElementToEnd; */
 
 //=============================== 30. MONOTONIC ARRAY ======================================//
 //TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(1)
+/*ALGORITHM: 
+- FIRST CREATE ISDECREASING AND ISINCREASING VARIABLE WITH INTIAL VALUE true.
+- ITERATE TRHOUGH AN ARRAY
+ - IF ARRAY CURRENT VALUE IS LESS THAN IT'S PREVIOUS VALUE THEN ASSING false TO ISINCREASING. 
+ - IF ARRAY CURRENT VALUE IS GREATER THAN IT'S PREVIOUS VALUE THEN ASSIGN false TO ISDECREASING.
+- LAST RETURN (ISDECREASING OR ISINCREASING).
+ */
 
 /* function isMonotonic(array) {
   // Write your code here.
-   isDecreasing = true;
-  isIncreasing = true;
+  let isDecreasing = true;
+  let isIncreasing = true;
 
   for(let num = 1; num < array.length; num++){
     if(array[num] < array[num - 1]) isIncreasing = false;
@@ -1242,6 +1315,9 @@ exports.isMonotonic = isMonotonic; */
 
 //=============================== 31. SPIRAL TRAVERSE ======================================//
 //TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(n)
+/*ALGORITHM:
+
+ */
 /* 
 function spiralTraverse(array) {
   // Write your code here.
@@ -1279,7 +1355,17 @@ exports.spiralTraverse = spiralTraverse;
 
 //=============================== 32.ARRAY PRODUCT - EXCEPT ITSELF  ======================================//
 //TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(n)
+/*ALGORITHM:
+ - FIRST CREATE NEW RESULT ARRAY WITH THE SAME LENGTH OF ARRAY AND FILL WITH 1 
+ & CREATE PRODUCT VARIABLE WITH INITIAL VALUE 1.
+ - ITERATE THROUGH ARRAY AND ASSIGN PRODUCT TO THE CURRENT RESULT ARR VALUE, 
+ AND ASSIGN THE PRODUCT OF CURRENT ARRAY VAULE AND PRODUCT, TO PROD.
+ - THEN AGAIN MAKE PRODUCT INTIALLY 1.
+- ITERATE THROUGH ARRAY IN REVERSE ORDER, AND ASSIGN PRODUCT OF CURRENT RESULT VALUE && PRODUCT, TO THE CURRENT RESULT ARR VALUE. 
+ ALSO ASSIGN PRODUCT OF CURRENT ARRAY VALUE AND PRODUCT VALUE TO THE PRODUCT.
+- IN LAST RETURN THE RESULT ARR.
 
+ */
 /* function arrayOfProducts(array) {
   // Write your code here.
   let result = new Array(array.length).fill(1);
@@ -1304,8 +1390,13 @@ exports.arrayOfProducts = arrayOfProducts;
  */
 
 //=============================== 33. FIRST DUPLICATE VALUE ======================================//
-//TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(n)
-
+//TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(1)
+/* ALGORITHM:
+- CREATE HASH SET  TO STORE UNIQUE VALUES. 
+- ITERATE THROUGH ARRAY, IF SET HAS THE CURRENT VALUE OF ARRAY ALREADY THEN IMMIDIATLY RETURNS THE CURRENT VAL.
+- ELSE ADD CURRENT VALUE TO THE SET.
+- LAST THER IS NO DUPLICATE VALUE THEN RETURN -1;
+ */
 /* function firstDuplicateValue(array) {
   // Write your code here.
 
@@ -1323,6 +1414,16 @@ exports.firstDuplicateValue = firstDuplicateValue;
 
 //=============================== 34. MERGE OVERLAPPING INTERVAL ======================================//
 //TIME COMPLEXITY O(nlog(n)) & SPACE COMPLEXITY O(n)
+/* ALGORITHM:
+- FIRST SORT INTERVAL WITH RESPECT TO THEIR STARTING VALUES. TAKE 2 VARIABLE CURRENT AND NEXT WIITH INITAL VALUES 0 AND 1.
+- WHILE NEXT < ARRLENGTH
+- IF CHECK WHETHER THE LAST ELEMENT OF THE FIRST INTERVAL OVERLAPS WITH THE FIRST ELEMENT OF THE
+  NEXT INTERVAL.
+  - THEN LAST MAXIMUM ELEMENT TO SET AT THE VALUE OF OVERLAPPED INTERVAL 
+  - AND MERGE THAT OVERLAP.
+- ELSE INCREASE THE COUNTER FOR THE NEXT ELEMENT OF CURRENT AND NEXT VALUE.
+- LAST RETURN ARRAY.
+ */
 /* 
 function mergeOverlappingIntervals(array) {
   // Write your code here.
@@ -1357,6 +1458,14 @@ exports.mergeOverlappingIntervals = mergeOverlappingIntervals;
 
 //=============================== 35. ZERO SUM SUBARRAY ======================================//
 //TIME COMPLEXITY O(n) & SPACE COMPLEXITY O(n)
+/*ALGORITHM:
+- CREATE SET TO STORE THE UNIQUE VALUE AND CREATE COUNT VARIABLE WITH INITIALLY 0.
+- ITERATE THROUGH NUMS ARRAY. 
+ - ADD COUNT TO SET THEN COUNT += NUM(CURRRENT VALUE OF ARRAY)
+ - IF SET HAS COUNT THEN RETURN true.
+ - ELSE ADD COUNT TO THE SET.
+- IN LAST IF NOT FOUND THE SUBARRAY WITH THE ZERO SUM RETURN false 
+ */
 /* 
 function zeroSumSubarray(nums) {
   // Write your code here.
@@ -1703,5 +1812,33 @@ function numberOfWaysToMakeChange(n, denoms) {
 exports.numberOfWaysToMakeChange = numberOfWaysToMakeChange;
  */
 
-//=============================== 43.  ======================================//
+//=============================== 43. MIN NUMBER OF COINS FOR CHANGE ======================================//
+//TIME COMPLEXITY O(n d) & SPACE COMPLEXITY O(n)
+/* 
+function minNumberOfCoinsForChange(n, denoms) {
+  // Write your code here.
+
+  const ways = new Array(n+1).fill(Infinity);
+
+  ways[0] = 0;
+
+    for(const denom of denoms){
+       for(let amt = 0;  amt < ways.length; amt++){
+      if( denom <= amt){
+        ways[amt] = Math.min(ways[amt], ways[amt - denom] + 1)
+      }
+  
+    }
+    
+  }
+
+ return ways[n] !== Infinity ?  ways[n] : -1
+  
+}
+
+// Do not edit the line below.
+exports.minNumberOfCoinsForChange = minNumberOfCoinsForChange;
+ */
+
+//=============================== 44. ======================================//
 //TIME COMPLEXITY O(n d) & SPACE COMPLEXITY O(n)
